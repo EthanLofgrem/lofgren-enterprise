@@ -1,0 +1,7 @@
+# One owner. Required human review should be enabled only when a distinct reviewer exists.
+* @EthanLofgrem
+/.github/workflows/ @EthanLofgrem
+/supabase/migrations/ @EthanLofgrem
+/src/lib/auth/ @EthanLofgrem
+/src/lib/stripe/ @EthanLofgrem
+/src/app/api/stripe/ @EthanLofgrem

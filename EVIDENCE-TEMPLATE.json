@@ -1,0 +1,15 @@
+{
+  "task_id": "LE-001",
+  "status": "planned",
+  "repository": "EthanLofgrem/lofgren-enterprise",
+  "commit_sha": null,
+  "pr_url": null,
+  "changed_files": [],
+  "checks": [],
+  "vercel": {"project_id": null, "deployment_id": null, "preview_url": null, "protected": null},
+  "supabase": {"project_ref": null, "migration_head": null, "rls_negative_tests": null},
+  "stripe": {"account_context": null, "mode": null, "signed_test_webhooks": null},
+  "journeys": [],
+  "open_gates": [],
+  "updated_at": null
+}
