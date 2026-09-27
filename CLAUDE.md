@@ -18,3 +18,8 @@ Build the public acquisition site, producer and partner intake, protected deal w
 - Stripe webhooks: raw-body signature verification, unique event storage, idempotent state transitions, and refund/dispute reconciliation. Hosted Checkout for Lofgren's own setup fee first.
 - Stop and record a precise gate when an account owner, cost confirmation, legal review, provider capability, or protected deployment setting is needed; keep advancing independent source work.
 - Report each PR: commit SHA, changed files, CI result, Preview URL/protection, test evidence, and remaining gate. Do not claim production-ready without production evidence.
+
+## Token Machine (every session)
+- Follow `ops/README.md`: one task packet, load only what it names, finish with evidence + handoff, then `/clear`.
+- Never push to `main` or merge. Work on `le-<id>-<slug>` branches; Ethan merges PRs. GitHub does not enforce branch rules on this private personal repo, so this rule is the control.
+- Checks: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm test:e2e`.
