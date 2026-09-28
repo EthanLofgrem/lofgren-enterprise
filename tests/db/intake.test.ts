@@ -9,6 +9,7 @@ const OWNER = randomUUID();
 const OUTSIDER = randomUUID();
 
 const anon = { role: "anon" } as const;
+const server = { role: "service_role" } as const;
 const user = (sub: string) => ({ role: "authenticated", sub }) as const;
 
 let db: Db;
@@ -25,8 +26,8 @@ beforeAll(async () => {
   for (const u of [A, B, OP, OWNER, OUTSIDER]) await makeUser(db, u);
   await grantOperator(db, OP);
   await grantOperator(db, OWNER, "owner");
-  const refA = await as(db, anon, (tx) => submit(tx, validApplication(randomUUID(), { email: "a@example.com" })));
-  const refB = await as(db, anon, (tx) => submit(tx, validApplication(randomUUID(), { email: "b@example.com" })));
+  const refA = await as(db, server, (tx) => submit(tx, validApplication(randomUUID(), { email: "a@example.com" })));
+  const refB = await as(db, server, (tx) => submit(tx, validApplication(randomUUID(), { email: "b@example.com" })));
   appA = await idOf(refA);
   appB = await idOf(refB);
   // Linking an application to a verified account is a server step (LE-003); simulate it here.
@@ -43,9 +44,9 @@ describe("schema", () => {
   });
 });
 
-describe("anonymous intake", () => {
+describe("intake (server-mediated)", () => {
   it("returns a reference and records a submitted event", async () => {
-    const ref = await as(db, anon, (tx) => submit(tx, validApplication(randomUUID())));
+    const ref = await as(db, server, (tx) => submit(tx, validApplication(randomUUID())));
     expect(ref).toMatch(/^LE-[0-9A-F]{10}$/);
     const ev = await db.query("select to_status from public.application_events e join public.applications a on a.id = e.application_id where a.reference = $1", [ref]);
     expect(ev.rows).toEqual([{ to_status: "submitted" }]);
@@ -53,8 +54,8 @@ describe("anonymous intake", () => {
 
   it("is idempotent on repeat submit", async () => {
     const key = randomUUID();
-    const r1 = await as(db, anon, (tx) => submit(tx, validApplication(key)));
-    const r2 = await as(db, anon, (tx) => submit(tx, validApplication(key, { name: "Changed Name" })));
+    const r1 = await as(db, server, (tx) => submit(tx, validApplication(key)));
+    const r2 = await as(db, server, (tx) => submit(tx, validApplication(key, { name: "Changed Name" })));
     expect(r2).toBe(r1);
     const n = await db.query<{ n: number }>("select count(*)::int n from public.applications where idempotency_key = $1", [key]);
     expect(n.rows[0]!.n).toBe(1);
@@ -67,10 +68,18 @@ describe("anonymous intake", () => {
     ["missing consent", { consent: "" }],
     ["one-letter name", { name: "X" }],
   ])("rejects %s", async (_label, bad) => {
-    await expect(as(db, anon, (tx) => submit(tx, validApplication(randomUUID(), bad)))).rejects.toThrow();
+    await expect(as(db, server, (tx) => submit(tx, validApplication(randomUUID(), bad)))).rejects.toThrow();
   });
 
-  it("cannot read applications", async () => {
+  it("anonymous visitors cannot call submit_application directly", async () => {
+    await expect(as(db, anon, (tx) => submit(tx, validApplication(randomUUID())))).rejects.toThrow(/permission denied/);
+  });
+
+  it("signed-in users cannot call submit_application directly", async () => {
+    await expect(as(db, user(OUTSIDER), (tx) => submit(tx, validApplication(randomUUID())))).rejects.toThrow(/permission denied/);
+  });
+
+  it("anonymous visitors cannot read applications", async () => {
     await expect(as(db, anon, (tx) => tx.query("select * from public.applications"))).rejects.toThrow(/permission denied/);
   });
 

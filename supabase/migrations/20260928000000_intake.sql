@@ -1,5 +1,7 @@
 -- LE-002 intake: applications, status events, operator grants.
--- Anonymous intake goes only through submit_application(); status changes only
+-- Intake goes only through submit_application(), callable by service_role alone so
+-- the website server (rate limits, payload limits, honeypot) is the only entry.
+-- Status changes only
 -- through transition_application(). No client role gets direct write access.
 
 create type public.application_kind as enum ('producer', 'partner');
@@ -102,7 +104,7 @@ create policy application_events_select_operator on public.application_events
 create policy application_transitions_select on public.application_transitions
   for select to authenticated using (true); -- static reference data, not tenant data
 
--- Intake: the only write path for anonymous visitors --------------------------
+-- Intake: the only write path; invoked by the server after abuse checks ---------
 create function public.submit_application(
   p_idempotency_key uuid,
   p_kind public.application_kind,
@@ -201,5 +203,5 @@ revoke all on function public.is_operator() from public, anon, authenticated;
 revoke all on function public.submit_application(uuid, public.application_kind, text, text, text, text, text, text, text, text[], text, text) from public, anon, authenticated;
 revoke all on function public.transition_application(uuid, public.application_status, integer, text) from public, anon, authenticated;
 grant execute on function public.is_operator() to authenticated;
-grant execute on function public.submit_application(uuid, public.application_kind, text, text, text, text, text, text, text, text[], text, text) to anon, authenticated;
+grant execute on function public.submit_application(uuid, public.application_kind, text, text, text, text, text, text, text, text[], text, text) to service_role;
 grant execute on function public.transition_application(uuid, public.application_status, integer, text) to authenticated;

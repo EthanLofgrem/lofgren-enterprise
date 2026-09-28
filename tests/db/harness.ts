@@ -35,14 +35,14 @@ export async function freshDb() {
 }
 
 export type Db = PGlite;
-export type Actor = { role: "anon" } | { role: "authenticated"; sub: string } | { role: "postgres" };
+export type Actor = { role: "anon" } | { role: "service_role" } | { role: "authenticated"; sub: string } | { role: "postgres" };
 
 /** Runs fn inside a transaction as the given actor, then rolls back role state. */
 export async function as<T>(db: Db, actor: Actor, fn: (tx: Db) => Promise<T>): Promise<T> {
   await db.exec("begin");
   try {
     if (actor.role !== "postgres") {
-      const claims = JSON.stringify(actor.role === "authenticated" ? { sub: actor.sub, role: "authenticated" } : { role: "anon" });
+      const claims = JSON.stringify(actor.role === "authenticated" ? { sub: actor.sub, role: "authenticated" } : { role: actor.role });
       await db.query("select set_config('request.jwt.claims', $1, true)", [claims]);
       await db.exec(`set local role ${actor.role}`);
     }
