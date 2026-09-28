@@ -3,7 +3,7 @@
 Read `BUILD-BRIEF.md` before writing code. This repository belongs to Ethan Lofgren and is a new, isolated venture orchestration business. Do not reuse LPIS/Lofora databases, Stripe objects, Vercel projects, domains, credentials, or branding.
 
 ## Mission
-Build the public acquisition site, producer and partner intake, protected deal workspace, operator console, and test-mode Stripe setup-fee flow in the order specified in the brief. Keep this repository private. Use Next.js, TypeScript, Supabase, Vercel, GitHub Actions, and Stripe. Every external mutation must be attributable and verified.
+Build the public acquisition site, producer and partner intake, protected deal workspace, operator console, and test-mode Stripe setup-fee flow in the order specified in the brief. The repository is currently public (owner decision pending on private vs. public); commit no secrets, customer data, private deal terms, or security details that would aid abuse. Use Next.js, TypeScript, Supabase, Vercel, GitHub Actions, and Stripe. Every external mutation must be attributable and verified.
 
 ## First session
 1. Inspect repository and provider access. Record repo SHA and connected account/project identities in `docs/BUILD-STATE.md` without secrets.
@@ -23,3 +23,4 @@ Build the public acquisition site, producer and partner intake, protected deal w
 - Follow `ops/README.md`: one task packet, load only what it names, finish with evidence + handoff, then `/clear`.
 - Never push to `main` or merge. Work on `le-<id>-<slug>` branches; Ethan merges PRs. GitHub does not enforce branch rules on this private personal repo, so this rule is the control.
 - Checks: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm test:e2e`.
+- Rule files by task: RLS/auth `ops/rules/rls.md`; schema `ops/rules/migration.md`; Stripe `ops/rules/stripe-webhook.md`; Vercel `ops/rules/vercel-preview.md`; agreements/documents `ops/rules/agreements.md`; sales, statements, payouts `ops/rules/revenue-calculation.md`. Boundaries: `docs/architecture/invariants.md`.
