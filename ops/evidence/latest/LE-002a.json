@@ -1,0 +1,16 @@
+{
+  "task_id": "LE-002a",
+  "level": "local-tested",
+  "base": "le-001-baseline@085e488f24125b1192c82510b7bd61aa41bad10d",
+  "database": "PGlite 0.5.8 (in-process Postgres) with Supabase auth/role stub and Supabase default grants; not a Supabase project",
+  "migration_head": "20260928000000_intake",
+  "checks": {
+    "unit_and_db": "passed: 39/39 (db 22, validation 11, prior 6)",
+    "lint": "passed: 0 warnings",
+    "typecheck": "passed",
+    "build_e2e": "not rerun: no app/page code changed"
+  },
+  "defect_found": "anon retained EXECUTE on operator functions via Supabase default privileges; fixed by revoking from anon/authenticated",
+  "production_actions": false,
+  "rollback": "drop branch; migration never applied remotely"
+}
