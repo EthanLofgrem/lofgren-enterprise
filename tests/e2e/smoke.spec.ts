@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const ROUTES = ["/", "/how-it-works", "/producers", "/partners", "/fees", "/contact", "/privacy", "/terms"];
+const ROUTES = ["/", "/apply", "/how-it-works", "/producers", "/partners", "/fees", "/contact", "/privacy", "/terms"];
 
 for (const route of ROUTES) {
   test(`${route} renders one h1 and no horizontal scroll`, async ({ page }) => {
@@ -38,4 +38,21 @@ test("security headers are set", async ({ request }) => {
   expect(res.headers()["x-frame-options"]).toBe("DENY");
   expect(res.headers()["x-content-type-options"]).toBe("nosniff");
   expect(res.headers()["x-powered-by"]).toBeUndefined();
+});
+
+test("apply form renders for both kinds and is locked while intake is not configured", async ({ page }) => {
+  await page.goto("/apply?kind=partner");
+  await expect(page.locator("h1")).toHaveText("Apply as a partner");
+  await expect(page.getByRole("button", { name: "Submit application" })).toBeDisabled();
+  await page.getByRole("link", { name: "Producer", exact: true }).click();
+  await expect(page.locator("h1")).toHaveText("Apply as a producer");
+  await expect(page.getByText("Applications are not open yet")).toBeVisible();
+});
+
+test("confirmation page is noindex and echoes only a well-formed reference", async ({ page }) => {
+  await page.goto("/apply/received?ref=LE-ABCDEF1234");
+  await expect(page.getByText("LE-ABCDEF1234")).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+  await page.goto("/apply/received?ref=%3Cscript%3E");
+  await expect(page.getByText("Your reference is")).toHaveCount(0);
 });

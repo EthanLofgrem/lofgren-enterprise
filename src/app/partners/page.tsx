@@ -26,7 +26,7 @@ export default function Partners() {
           </p>
         </section>
       </div>
-      <div className="mt-10"><CTA>Apply as a partner</CTA></div>
+      <div className="mt-10"><CTA href="/apply?kind=partner">Apply as a partner</CTA></div>
     </Page>
   );
 }

@@ -28,7 +28,7 @@ export default function Producers() {
           </ul>
         </section>
       </div>
-      <div className="mt-10"><CTA>Apply as a producer</CTA></div>
+      <div className="mt-10"><CTA href="/apply?kind=producer">Apply as a producer</CTA></div>
     </Page>
   );
 }
