@@ -1,3 +1,5 @@
+> **Superseded by docs/product/CLAUDE-MISSION.md.** Kept for reference; where they disagree, the mission file wins.
+
 # Claude Code Pro production order — Lofgren Enterprise
 
 **Owner:** Ethan Lofgren, CEO and founder. **Canonical repository:** `EthanLofgrem/lofgren-enterprise`. **Status:** build and pilot preparation; no verified public production release. **Companion documents:** `CLAUDE-CODE-PRO-MASTER-BUILD-PACK.md`, `LOFGREN-ENTERPRISE-PRODUCTION-RUNBOOK.md`, `CLAUDE.md`, `PROVIDER-GATES.md`, `ops/README.md`, and `docs/BUILD-STATE.md`. This order converts the architecture into an executable sequence. Do not claim a requirement is satisfied merely because it appears here.

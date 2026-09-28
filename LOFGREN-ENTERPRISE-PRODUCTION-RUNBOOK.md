@@ -1,3 +1,5 @@
+> **Superseded by docs/product/CLAUDE-MISSION.md.** Kept for reference; where they disagree, the mission file wins.
+
 # Lofgren Enterprise: production, growth, and seven-worker runbook
 
 Owner: Ethan Lofgren. Canonical source: `EthanLofgrem/lofgren-enterprise`. Read `CLAUDE.md`, `ops/README.md`, `docs/BUILD-STATE.md`, `PROVIDER-GATES.md`, `CLAUDE-CODE-PRO-MASTER-BUILD-PACK.md`, and open PRs before acting. This runbook complements the master pack; the repository and verified provider state take precedence over guesses in this document.
