@@ -28,9 +28,11 @@ test("skip link is the first tab stop and targets main", async ({ page }) => {
   await expect(focused).toHaveAttribute("href", "#main");
 });
 
-test("preview intake form cannot submit", async ({ page }) => {
+test("contact says plainly that messages are closed, with no fake form", async ({ page }) => {
   await page.goto("/contact");
-  await expect(page.getByRole("button", { name: "Send message" })).toBeDisabled();
+  await expect(page.getByRole("heading", { name: "Messages aren't open yet." })).toBeVisible();
+  await expect(page.locator("main form")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: /send/i })).toHaveCount(0);
 });
 
 test("security headers are set", async ({ request }) => {
@@ -47,9 +49,9 @@ test("old routes redirect to the member pages", async ({ page }) => {
   await expect(page).toHaveURL(/\/who-can-join$/);
 });
 
-test("join walks through all four steps and stays locked while sign-up is closed", async ({ page }) => {
+test("join previews all four steps and ends in an explicit closed state, not a disabled button", async ({ page }) => {
   await page.goto("/join");
-  await expect(page.getByText("Applications open soon").first()).toBeVisible();
+  await expect(page.getByText("Applications aren't open yet.").first()).toBeVisible();
   await page.getByLabel("Full name").fill("Test Member");
   await page.getByLabel("Email").fill("member@example.com");
   await page.getByLabel("Where are you based?").fill("Tucson, AZ");
@@ -61,7 +63,12 @@ test("join walks through all four steps and stays locked while sign-up is closed
   await page.getByRole("button", { name: "Continue" }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await expect(page.locator("dd", { hasText: "Visual arts and crafts" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Send my application" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Send my application" })).toHaveCount(0);
+  await expect(page.getByText("End of the preview.")).toBeVisible();
+  await expect(page.getByText("Nothing you typed has been sent or saved.")).toBeVisible();
+  // Back still works from the end of the preview.
+  await page.getByRole("button", { name: "Back" }).click();
+  await expect(page.getByRole("heading", { name: "What you want to build" })).toBeVisible();
 });
 
 test("console fails closed when Supabase is not configured", async ({ page }) => {

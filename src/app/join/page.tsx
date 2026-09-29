@@ -41,7 +41,7 @@ export default function Join() {
       <div>
         {!enabled && (
           <div className="mb-5">
-            <DraftNotice>Applications open soon. This is a preview of the application: you can try every step, but nothing is sent or stored yet.</DraftNotice>
+            <DraftNotice><strong>Applications aren&apos;t open yet.</strong> You can preview the questions below, but you can&apos;t send an application, and nothing you type is sent or stored.</DraftNotice>
           </div>
         )}
         <JoinForm enabled={enabled} consentVersion={CONSENT_VERSION} categories={CATEGORIES.map(({ slug, title }) => ({ slug, title }))} />

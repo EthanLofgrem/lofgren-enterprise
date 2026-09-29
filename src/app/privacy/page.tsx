@@ -40,7 +40,7 @@ export default function Privacy() {
         </Section>
 
         <Section title="What we collect">
-          <p>When you apply through the website, we collect what you type into the form. Applying does not create an account or a login.</p>
+          <p>When you apply through the website, we collect what you type into the form. Applying doesn&apos;t give you an account or a login.</p>
           <ul className="list-disc space-y-1.5 pl-5">
             <li>Your name, email address, and city or region.</li>
             <li>A business name, if you have one.</li>

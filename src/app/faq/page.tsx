@@ -13,7 +13,7 @@ const FAQ_PAGE = {
 
 export const metadata: Metadata = pageMetadata({
   title: "Frequently asked questions",
-  description: "Plain answers about joining Lofgren Enterprise, matching, ownership, fees, electronic signing, and forming an LLC.",
+  description: "Plain answers about joining Lofgren Enterprise, matching, ownership, fees, and what happens if a team forms a company.",
   path: "/faq",
 });
 

@@ -103,7 +103,7 @@ export default function Home() {
             {([
               { icon: "people", title: "We connect", body: "You tell us what you bring and what interests you. We find people whose strengths fit yours." },
               { icon: "blueprint", title: "We organize", body: "We help the team agree on roles, contributions, and ownership, and put it all in one clear plan." },
-              { icon: "building", title: "We make it official", body: "When a team is ready: an attorney-prepared agreement everyone signs, and a new LLC for the team." },
+              { icon: "building", title: "We keep it moving", body: "We support the pilot, and if the team forms its own company, we can keep supporting it with an operating rhythm and records." },
             ] as const).map((b) => (
               <div key={b.title} className="flex gap-4">
                 <IconBadge name={b.icon} />
@@ -198,17 +198,17 @@ export default function Home() {
       <section aria-labelledby="role" className="mx-auto max-w-6xl px-4 pt-24">
         <div className="grid gap-10 rounded-2xl border border-line bg-panel p-6 md:p-10 lg:grid-cols-2">
           <div>
-            <SectionHeading id="role" eyebrow="Our role" title="What Lofgren Enterprise does, and how we are paid." />
+            <SectionHeading id="role" eyebrow="Our role" title="Members own their business. We provide the support." />
             <p className="mt-4 text-muted">
-              Joining and being matched are free. When a team forms a business, Lofgren Enterprise may become a member of
-              the new LLC or receive a fee for organizing it. Those terms are written into the agreement, so you see them before anyone signs.
+              Applying and being matched are free. Lofgren Enterprise is paid for services a team or business chooses to use, under
+              written terms it can end. We don&apos;t own any part of your business automatically.
             </p>
             <Link href="/fees" className="mt-5 inline-block font-semibold text-accent underline underline-offset-4">How fees work</Link>
           </div>
           <ul className="grid gap-4 self-center">
             {[
-              ["We do", "Match members, guide the plan, help coordinate the attorney, signing, and LLC filing when a team goes ahead, and support the business after launch."],
-              ["We don't", "Guarantee results, promise returns, give legal or tax advice, or hold your money."],
+              ["We do", "Match members, guide the plan and the pilot, organize the team's information for its own advisers, and offer ongoing operating support."],
+              ["We don't", "Guarantee results, promise returns, give legal or tax advice, prepare legal documents, own your business, or hold your money."],
               ["You decide", "Who you work with, what you contribute, and whether to sign."],
             ].map(([h, b]) => (
               <li key={h} className="rounded-lg bg-sand p-4">

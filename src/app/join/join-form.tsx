@@ -219,15 +219,17 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
           <button type="button" onClick={next} className="rounded-lg bg-brand px-6 py-3 font-semibold text-brand-ink hover:opacity-90">
             Continue
           </button>
-        ) : (
-          <button type="submit" disabled={!enabled || pending} className="rounded-lg bg-brand px-6 py-3 font-semibold text-brand-ink hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
+        ) : enabled ? (
+          <button type="submit" disabled={pending} className="rounded-lg bg-brand px-6 py-3 font-semibold text-brand-ink hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
             {pending ? "Sending…" : "Send my application"}
           </button>
+        ) : (
+          <p className="max-w-sm text-right font-semibold">End of the preview. Applications aren&apos;t open yet, so there is nothing to send.</p>
         )}
       </div>
 
       <div role="status" aria-live="polite" className="mt-4 text-sm">
-        {!enabled && step === 3 && <p className="text-muted">Applications open soon. You can look through every step, but nothing is sent yet.</p>}
+        {!enabled && step === 3 && <p className="text-muted">Nothing you typed has been sent or saved. Leaving this page clears it.</p>}
         {state.status === "rate_limited" && <p className="text-bad">Too many attempts from your connection. Please try again in an hour.</p>}
         {state.status === "unavailable" && enabled && <p className="text-bad">Something went wrong on our side. Please try again in a few minutes.</p>}
         {state.status === "invalid" && serverErrors.form && <p className="text-bad">{serverErrors.form[0]}</p>}

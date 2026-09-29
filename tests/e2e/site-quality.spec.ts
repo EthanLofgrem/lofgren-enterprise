@@ -9,6 +9,11 @@ const PUBLIC = ["/", "/how-it-works", "/who-can-join", "/examples", "/capital-pa
 const BANNED = [
   "guaranteed return", "guaranteed income", "guaranteed profit", "passive income", "invest now", "approved venture",
   "automatic payout", "get rich", "our attorneys", "we are a law firm",
+  // Capabilities Lofgren does not provide: legal documents, filings, signing
+  // services, or ownership of member businesses. Update only with evidence.
+  "guaranteed funding", "guaranteed customers", "automatic ownership", "form your llc", "we form", "we register your",
+  "we prepare your", "attorney-prepared", "prepared with an attorney", "through docusign", "coordinate the attorney",
+  "profits interest", "lofgren's stake", "become a member of the new llc", "create your account", "create an account",
 ];
 
 for (const scheme of ["light", "dark"] as const) {

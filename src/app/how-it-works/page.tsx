@@ -28,8 +28,8 @@ export default function HowItWorks() {
       >
         <div className="mb-10 max-w-3xl">
           <DraftNotice>
-            Pre-launch: this is how the process is designed to work once applications open. Each team&apos;s agreement, electronic signing,
-            and LLC filing will be handled case by case with licensed professionals.
+            Pre-launch: this is how the process is designed to work once applications open. If a team forms a company, its agreement,
+            signing, and filing are handled by the team and its own professionals.
           </DraftNotice>
         </div>
         <ol className="relative">
@@ -75,18 +75,18 @@ export default function HowItWorks() {
             <SectionHeading
               id="official"
               eyebrow="Making it official"
-              title="The agreement and your LLC, in plain English."
+              title="If your team forms a company, in plain English."
             />
             <div className="mt-5 space-y-4 text-lg leading-relaxed text-muted">
               <p>
-                <strong className="text-ink">The operating agreement</strong> is the rulebook for your business. It names every member,
-                what each person contributes, their role, their ownership share, how profits are shared, how decisions are made, and what happens if someone leaves.
+                <strong className="text-ink">The operating agreement</strong> is the rulebook for the business. It names every member,
+                what each person contributes, their role, their ownership share, how profits are shared, how decisions are made, and what happens if someone leaves. The team&apos;s own attorney prepares or reviews it.
               </p>
               <p>
-                <strong className="text-ink">Electronic signing</strong> (we plan to use DocuSign) would let everyone read and sign that agreement online from any device. Each member gets a copy of the signed agreement.
+                <strong className="text-ink">Signing</strong> happens only when every member is comfortable. Each member keeps a copy of the signed agreement.
               </p>
               <p>
-                <strong className="text-ink">The LLC</strong> (limited liability company) would be registered with your state. It separates the business from each member&apos;s personal finances and records who owns what.
+                <strong className="text-ink">The LLC</strong> (limited liability company) is registered with the state by the team or its chosen provider. It has its own bank account, contracts, and records, separate from each member and from Lofgren Enterprise.
               </p>
             </div>
           </div>
@@ -94,14 +94,14 @@ export default function HowItWorks() {
             <Callout title="Protections built into every step">
               <ul className="list-disc space-y-1.5 pl-5">
                 <li>Introductions happen only when both sides agree.</li>
-                <li>Agreements are prepared with a licensed attorney.</li>
+                <li>Legal documents come from the team&apos;s own attorney, never from us.</li>
                 <li>You are encouraged to have your own lawyer or accountant review the agreement.</li>
-                <li>Lofgren&apos;s own share or fee is written into the agreement before anyone signs.</li>
-                <li>Money is only contributed on terms an attorney has confirmed are allowed.</li>
+                <li>Lofgren Enterprise doesn&apos;t own your business automatically. Any fee is for services, in writing, before you pay.</li>
+                <li>Money is only contributed on terms qualified legal counsel has confirmed are allowed.</li>
               </ul>
             </Callout>
             <p className="text-sm text-muted">
-              Lofgren Enterprise coordinates this process with licensed professionals. We are not a law firm and do not give legal, tax, or investment advice.
+              Lofgren Enterprise organizes the team&apos;s information for its own professionals. We are not a law firm and do not give legal, tax, or investment advice.
             </p>
           </div>
         </section>

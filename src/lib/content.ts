@@ -69,11 +69,11 @@ export const STEPS = [
     n: 5,
     name: "Assemble",
     icon: "pen",
-    title: "Sign and form your LLC",
-    short: "If the team goes ahead: one agreement everyone signs, and a new LLC.",
-    body: "If the team decides to go ahead, the plan becomes an operating agreement prepared with an attorney. Everyone reads it, can review it with their own adviser, and signs electronically. Then the business can be registered as its own LLC.",
-    you: "Read, ask questions, and sign when you are comfortable.",
-    us: "We help coordinate the attorney, the signing, and the LLC filing. Nothing is binding until everyone signs.",
+    title: "Decide whether to make it official",
+    short: "If the team chooses: its own company, with its own agreement and advisers.",
+    body: "If the team decides to formalize, it works with its own attorney or other qualified professionals to form a separate company and write the agreement that sets out ownership, roles, and decisions. Ownership, legal, and tax decisions stay with the team and its advisers.",
+    you: "Decide whether to go ahead, choose your advisers, and sign only when you are comfortable.",
+    us: "We organize the team's plan and readiness information for its professionals. We don't give legal advice, prepare legal documents, or file anything for you.",
   },
   {
     n: 6,
@@ -90,10 +90,10 @@ export const STEPS = [
     name: "Operate",
     icon: "building",
     title: "Run and grow the business",
-    short: "Your team operates a business you own together.",
-    body: "With the pilot behind you, the team runs the business under its agreement. Lofgren Enterprise stays on to help with operations, connections, and growth.",
+    short: "A business you own. A team that keeps moving.",
+    body: "The business runs through its own company, bank account, records, and agreements. If it wants, it can keep Lofgren Enterprise's operating support: a regular meeting rhythm, decision and task records, a scorecard, and connections.",
     you: "Build the business with your team.",
-    us: "We keep supporting the business as described in your agreement.",
+    us: "If the business chooses, we keep supporting it under a separate written service agreement it can end.",
   },
 ] as const satisfies readonly {
   n: number;
@@ -250,8 +250,8 @@ export const EXAMPLES = [
 export const PROMISES = [
   { icon: "user", title: "Free to join", body: "Applying and being matched cost nothing." },
   { icon: "handshake", title: "You choose", body: "You are only introduced when you agree, and you can say no at any step." },
-  { icon: "pen", title: "Everything in writing", body: "Roles, ownership, and money are set out in one agreement before anything starts." },
-  { icon: "building", title: "A business you own", body: "A team that goes ahead forms its own LLC, with every member's share written into its agreement." },
+  { icon: "pen", title: "Everything in writing", body: "If a team goes ahead, roles, ownership, and money are set out in writing before anyone commits." },
+  { icon: "building", title: "A business you own", body: "If a team forms a business, its members own it under their own agreement. Lofgren Enterprise doesn't own it automatically." },
 ] as const satisfies readonly { icon: IconName; title: string; body: string }[];
 
 export const FAQ = [
@@ -265,7 +265,11 @@ export const FAQ = [
   },
   {
     q: "How does Lofgren Enterprise make money?",
-    a: "When a team forms a business, Lofgren Enterprise may become a member of the new LLC or receive a fee for organizing it. The exact terms are written into the agreement, and you see them before anyone signs.",
+    a: "From fees for services it actually provides, such as planning and pilot support, or ongoing operating support a business chooses to keep. Prices will be published before any fee is charged.",
+  },
+  {
+    q: "Will Lofgren Enterprise own my business?",
+    a: "Not automatically. If a team forms a business, the team decides its ownership and management and records them in its own written agreement. Lofgren Enterprise can provide separate paid services to that business if it chooses.",
   },
   {
     q: "How are matches made?",
@@ -281,11 +285,11 @@ export const FAQ = [
   },
   {
     q: "What is an LLC, and why form one?",
-    a: "A limited liability company is a business registered with the state. It keeps the business separate from each member's personal finances and records who owns what. Each team gets its own LLC.",
+    a: "A limited liability company is a business registered with the state. It keeps the business separate from each member's personal finances. A team that decides to formalize forms its own separate company, often an LLC, with help from its own advisers.",
   },
   {
     q: "What exactly do I sign?",
-    a: "An operating agreement for your new LLC, prepared with an attorney. It lists every member, their role, their contribution, their ownership share, and how decisions and profits work. Everyone would sign electronically.",
+    a: "If your team formalizes, its members sign the company's own agreement, prepared or reviewed by the team's attorney. It sets out each member's role, contribution, ownership, and how decisions and profits work. Lofgren Enterprise doesn't prepare legal documents.",
   },
   {
     q: "Can I have my own lawyer review the agreement?",
@@ -296,8 +300,8 @@ export const FAQ = [
     a: "You can apply and choose Capital as what you bring. Contributing money to a business can be treated as an investment under securities laws, so capital is only accepted on terms an attorney has confirmed are allowed. See the Capital partners page.",
   },
   {
-    q: "What happens after the LLC is formed?",
-    a: "Your team runs the business according to the plan. Lofgren Enterprise stays involved to help with operations, connections, and growth, as described in your agreement.",
+    q: "What happens after the team forms a business?",
+    a: "The business operates through its own company, records, bank account, and agreements. It may choose ongoing support from Lofgren Enterprise, such as operating rhythm, planning, records, and connections, under a separate written service agreement it can end.",
   },
   {
     q: "Is my information private?",

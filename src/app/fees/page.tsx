@@ -4,30 +4,30 @@ import { CTABand, DraftNotice, Page } from "@/components/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "Fees",
-  description: "Joining Lofgren Enterprise and being matched are free. Any fee or share for forming a business is written into its agreement before anyone signs.",
+  description: "Applying to Lofgren Enterprise and being matched are free. Lofgren is paid only for services a team or business chooses, under written terms.",
   path: "/fees",
 });
 
 const FEES = [
-  { term: "Creating an account", price: "Free", body: "Sign up, build your profile, and update it any time." },
+  { term: "Applying", price: "Free", body: "Tell us what you bring. Applying does not commit you to anything." },
   { term: "Matching and introductions", price: "Free", body: "We review your profile, suggest teams, and make introductions at no cost." },
   {
-    term: "When a business forms",
-    price: "Set in your agreement",
-    body: "Lofgren Enterprise may become a member of the new LLC, receive a fee for organizing it, or both. The exact terms are written into the operating agreement you review before signing.",
+    term: "Planning, pilot, and operating support",
+    price: "Service fees, in writing",
+    body: "If a team or business chooses our support, it pays for defined services under a written agreement it can end. Lofgren Enterprise doesn't own any part of your business automatically.",
   },
   {
-    term: "Formation costs",
-    price: "Paid by the new business",
-    body: "State filing fees and attorney costs for the agreement are business expenses. The team agrees how they are covered as part of the plan.",
+    term: "Forming a company",
+    price: "Paid to your own providers",
+    body: "If a team formalizes, state filing fees and its own attorney's or accountant's fees are paid directly to those providers. We don't mark them up.",
   },
 ] as const;
 
 export default function Fees() {
   return (
     <>
-      <Page eyebrow="Fees" title="Free to join. Clear terms if you build." intro="You should know how we are paid before you ever meet a team. Here it is, plainly.">
-        <DraftNotice>Pre-launch: specific percentages and amounts are not published yet. They are set in writing for each business, before anyone signs.</DraftNotice>
+      <Page eyebrow="Fees" title="Free to join. Clear terms for any support." intro="You should know how we are paid before you ever meet a team. Here it is, plainly.">
+        <DraftNotice>Pre-launch: service prices are not published yet, and no fees are being charged. Prices will be published before anyone is asked to pay.</DraftNotice>
         <dl className="mt-8 grid gap-5 md:grid-cols-2">
           {FEES.map((f) => (
             <div key={f.term} className="rounded-xl border border-line bg-panel p-6">
@@ -40,7 +40,7 @@ export default function Fees() {
           ))}
         </dl>
         <p className="mt-8 max-w-2xl text-muted">
-          If no business forms, you owe nothing. We recommend every member review the agreement with their own attorney or accountant before signing.
+          Applying and matching never cost anything. We recommend every member review any agreement with their own attorney or accountant before signing.
         </p>
       </Page>
       <CTABand />

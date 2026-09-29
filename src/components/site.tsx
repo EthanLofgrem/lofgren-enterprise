@@ -30,7 +30,7 @@ export function Logo() {
 export function PrelaunchBanner() {
   return (
     <aside aria-label="Site status" className="bg-brand px-4 py-2 text-center text-sm text-brand-ink">
-      Pre-launch preview. Applications, matching, agreements, and LLC formation are not open yet.
+      Pre-launch preview. Applications, matching, and team services are not open yet.
     </aside>
   );
 }
