@@ -12,6 +12,7 @@ Project: `lofgren-enterprise` (team `ethans-projects-a7eaa281`). These are setti
 | Name | Value source | Notes |
 |---|---|---|
 | `NEXT_PUBLIC_SUPABASE_URL` | Dev project `kaddnaknuhptcleppspj` API URL | Not secret |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Dev project publishable key | Not secret; used by the console sign-in (see `docs/OWNER-ACCESS.md`) |
 | `SUPABASE_SECRET_KEY` | Dev project secret key | Server only; never `NEXT_PUBLIC_` |
 | `INTAKE_HASH_SALT` | A new random value, 32+ characters | Server only |
 | `INTAKE_ENABLED` | `false` | Set `true` only during the supervised Gate 1 test, then back to `false` |

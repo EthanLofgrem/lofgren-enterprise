@@ -20,7 +20,7 @@ test.describe("deployed preview", () => {
   test("refuses a visitor who is not signed in to Vercel", async ({ playwright }) => {
     // A fresh context without the bypass header, like an outside visitor.
     const outsider = await playwright.request.newContext({ baseURL: deployed, maxRedirects: 0 });
-    for (const path of ["/", "/api/health", "/join"]) {
+    for (const path of ["/", "/api/health", "/join", "/console"]) {
       const res = await outsider.get(path);
       const location = res.headers()["location"] ?? "";
       expect([401, 302, 303, 307]).toContain(res.status());

@@ -64,6 +64,24 @@ test("join walks through all four steps and stays locked while sign-up is closed
   await expect(page.getByRole("button", { name: "Create my account" })).toBeDisabled();
 });
 
+test("console fails closed when Supabase is not configured", async ({ page }) => {
+  test.skip(!!process.env.BASE_URL, "deployed previews may have Supabase configured");
+  for (const path of ["/console", "/console/sign-in", "/console/applications/00000000-0000-4000-8000-000000000000"]) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { name: "The console isn't set up here." })).toBeVisible();
+    await expect(page.locator("table")).toHaveCount(0);
+    await expect(page.getByLabel("Email")).toHaveCount(0);
+  }
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+});
+
+test("sign-in callback without a code goes back to sign-in", async ({ page }) => {
+  const res = await page.goto("/console/auth/callback?next=https://evil.example");
+  expect(new URL(page.url()).pathname).toBe("/console/sign-in");
+  expect(page.url()).not.toContain("evil.example");
+  expect(res?.status()).toBe(200);
+});
+
 test("confirmation page is noindex and echoes only a well-formed reference", async ({ page }) => {
   await page.goto("/join/received?ref=LE-ABCDEF1234");
   await expect(page.getByText("LE-ABCDEF1234")).toBeVisible();
