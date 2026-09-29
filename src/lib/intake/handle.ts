@@ -61,8 +61,11 @@ function formBytes(form: FormData) {
 }
 
 /**
- * Order matters: size check, rate limit, validation, then the database call.
- * Errors never reveal whether an application or email already exists.
+ * Order matters: size check, validation and honeypot, rate limit, then the
+ * database call. Only a submission that would be stored uses up a rate-limit
+ * attempt, so an applicant fixing typos is never locked out. Rejected input
+ * never reaches the database. Errors never reveal whether an application or
+ * email already exists.
  */
 export async function handleIntake(form: FormData, clientKey: string, deps: IntakeDeps): Promise<IntakeResult> {
   const log = deps.log ?? (() => {});
@@ -70,18 +73,6 @@ export async function handleIntake(form: FormData, clientKey: string, deps: Inta
   if (formBytes(form) > MAX_FORM_BYTES) {
     log("intake.too_large");
     return { status: "invalid", fieldErrors: { form: ["Your answers are too long. Please shorten them."] } };
-  }
-
-  let allowed: boolean;
-  try {
-    allowed = await deps.recordAttempt(clientKey);
-  } catch {
-    log("intake.rate_check_failed");
-    return { status: "unavailable" }; // fail closed
-  }
-  if (!allowed) {
-    log("intake.rate_limited");
-    return { status: "rate_limited" };
   }
 
   const parsed = applicationSchema.safeParse(formToObject(form));
@@ -97,6 +88,18 @@ export async function handleIntake(form: FormData, clientKey: string, deps: Inta
       (fieldErrors[field] ??= []).push(issue.message);
     }
     return { status: "invalid", fieldErrors };
+  }
+
+  let allowed: boolean;
+  try {
+    allowed = await deps.recordAttempt(clientKey);
+  } catch {
+    log("intake.rate_check_failed");
+    return { status: "unavailable" }; // fail closed
+  }
+  if (!allowed) {
+    log("intake.rate_limited");
+    return { status: "rate_limited" };
   }
 
   const a = parsed.data;

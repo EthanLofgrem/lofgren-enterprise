@@ -41,18 +41,32 @@ describe("handleIntake", () => {
     expect(args.p_consent_version).toMatch(/^privacy-/);
   });
 
-  it("returns field errors without calling the database", async () => {
+  it("returns field errors without calling the database or using a rate-limit attempt", async () => {
     const d = deps();
     const r = await handleIntake(form({ email: "bad", consent: undefined }), "k", d);
     expect(r.status).toBe("invalid");
     if (r.status === "invalid") expect(Object.keys(r.fieldErrors).sort()).toEqual(["consent", "email"]);
+    expect(d.recordAttempt).not.toHaveBeenCalled();
     expect(d.submit).not.toHaveBeenCalled();
   });
 
-  it("stops at the rate limit before validating or submitting", async () => {
+  it("refuses a valid submission over the rate limit without submitting", async () => {
     const d = deps({ recordAttempt: vi.fn(async () => false) });
     expect(await handleIntake(form(), "k", d)).toEqual({ status: "rate_limited" });
+    expect(d.recordAttempt).toHaveBeenCalledTimes(1);
     expect(d.submit).not.toHaveBeenCalled();
+  });
+
+  it("lets an applicant fix typos: invalid tries do not count toward the limit", async () => {
+    // Simulates the database limiter: 5 allowed attempts per client.
+    let used = 0;
+    const d = deps({ recordAttempt: vi.fn(async () => ++used <= 5) });
+    for (let i = 0; i < 6; i++) {
+      expect((await handleIntake(form({ email: "typo" }), "k", d)).status).toBe("invalid");
+    }
+    expect(used).toBe(0);
+    expect((await handleIntake(form(), "k", d)).status).toBe("received");
+    expect(used).toBe(1);
   });
 
   it("fails closed when the rate-limit check errors", async () => {
@@ -64,6 +78,7 @@ describe("handleIntake", () => {
   it("answers a honeypot hit like a success but stores nothing", async () => {
     const d = deps();
     expect(await handleIntake(form({ website: "http://spam.example" }), "k", d)).toEqual({ status: "received", reference: null });
+    expect(d.recordAttempt).not.toHaveBeenCalled();
     expect(d.submit).not.toHaveBeenCalled();
   });
 
