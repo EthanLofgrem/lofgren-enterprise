@@ -1,0 +1,20 @@
+{
+  "task_id": "LE-001",
+  "commit_sha": "b89e86f1d454c7d237610a246f48c879c5b3480e",
+  "level": "local-tested",
+  "environment": { "os": "Windows 11", "node": "24.14.1", "pnpm": "10.18.0", "supabase": "none", "stripe_mode": "none", "vercel": "none" },
+  "checks": {
+    "install": "passed (pnpm install, lockfile created)",
+    "lint": "passed: 0 errors, 0 warnings",
+    "typecheck": "passed",
+    "unit": "passed: 6/6",
+    "build": "passed: 10 routes",
+    "e2e": "passed: 24/24 (12 desktop, 12 mobile Chromium)",
+    "visual": "manual screenshots: / at 375x812, /fees at desktop",
+    "ci": "pending first GitHub Actions run",
+    "preview": "blocked: no Vercel project"
+  },
+  "production_actions": false,
+  "known_risks": ["main is not protected by GitHub on this plan", "CI has not run yet"],
+  "rollback": "close PR / revert commit; no data or provider changes"
+}
