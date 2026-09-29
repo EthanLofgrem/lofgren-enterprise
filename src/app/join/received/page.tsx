@@ -3,10 +3,10 @@ import Link from "next/link";
 import { Page } from "@/components/site";
 import { STEPS } from "@/lib/content";
 
-export const metadata: Metadata = { title: "Account request received", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Application received", robots: { index: false, follow: false } };
 
 // Echoes the reference from the redirect only; it never looks anything up, so
-// this page cannot be used to check whether an account request exists.
+// this page cannot be used to check whether an application exists.
 export default async function Received({ searchParams }: { searchParams: Promise<{ ref?: string }> }) {
   const raw = (await searchParams).ref ?? "";
   const ref = /^LE-[0-9A-F]{10}$/.test(raw) ? raw : null;
@@ -15,11 +15,11 @@ export default async function Received({ searchParams }: { searchParams: Promise
     <Page
       eyebrow="Welcome"
       title="You're in. Qualify is underway."
-      intro="A person on our team will review your profile and email you about next steps. Creating an account is not a match, an approval, or an agreement."
+      intro="A person on our team will review your profile and email you about next steps. Applying is not a match, an approval, or an agreement."
     >
       {ref && (
         <p className="rounded-xl border border-line bg-panel p-5 text-lg">
-          Your reference is <strong className="font-mono">{ref}</strong>. Keep it if you contact us about your account.
+          Your reference is <strong className="font-mono">{ref}</strong>. Keep it if you contact us about your application.
         </p>
       )}
       <h2 className="mt-10 font-serif text-2xl font-semibold">What happens next</h2>

@@ -12,7 +12,7 @@ export const NAV = [
 ] as const;
 
 const FOOTER = [
-  { heading: "Get started", links: [{ href: "/join", label: "Create your account" }, { href: "/how-it-works", label: "How it works" }, { href: "/who-can-join", label: "Who can join" }] },
+  { heading: "Get started", links: [{ href: "/join", label: "Apply to join" }, { href: "/how-it-works", label: "How it works" }, { href: "/who-can-join", label: "Who can join" }] },
   { heading: "Learn more", links: [{ href: "/examples", label: "Example teams" }, { href: "/capital-partners", label: "Capital partners" }, { href: "/fees", label: "Fees" }, { href: "/faq", label: "FAQ" }] },
   { heading: "Company", links: [{ href: "/contact", label: "Contact" }, { href: "/privacy", label: "Privacy (draft)" }, { href: "/terms", label: "Terms (draft)" }] },
 ] as const;
@@ -30,7 +30,7 @@ export function Logo() {
 export function PrelaunchBanner() {
   return (
     <aside aria-label="Site status" className="bg-brand px-4 py-2 text-center text-sm text-brand-ink">
-      Pre-launch preview. Accounts, matching, agreements, and LLC formation are not open yet.
+      Pre-launch preview. Applications, matching, agreements, and LLC formation are not open yet.
     </aside>
   );
 }
@@ -51,7 +51,7 @@ export function SiteHeader() {
         </nav>
         <div className="flex items-center gap-2">
           <Link href="/join" className="hidden rounded-md bg-brand px-4 py-2 text-sm font-semibold text-brand-ink hover:opacity-90 sm:inline-block">
-            Create account
+            Apply
           </Link>
           <details className="relative lg:hidden">
             <summary className="cursor-pointer list-none rounded-md border border-line px-3 py-2 text-sm font-semibold [&::-webkit-details-marker]:hidden">Menu</summary>
@@ -63,7 +63,7 @@ export function SiteHeader() {
                   </li>
                 ))}
                 <li className="mt-1 border-t border-line pt-2">
-                  <Link href="/join" className="block rounded bg-brand px-3 py-2.5 text-center font-semibold text-brand-ink">Create account</Link>
+                  <Link href="/join" className="block rounded bg-brand px-3 py-2.5 text-center font-semibold text-brand-ink">Apply</Link>
                 </li>
               </ul>
             </nav>
@@ -173,7 +173,7 @@ export function StepList() {
   );
 }
 
-export function CTABand({ title = TAGLINE, body = "Bring what you do. Build what comes next. Create a free account, tell us what you bring, and we will look for the people you could build a business with." }: { title?: string; body?: string }) {
+export function CTABand({ title = TAGLINE, body = "Bring what you do. Build what comes next. Apply for free, tell us what you bring, and we will look for the people you could build a business with." }: { title?: string; body?: string }) {
   return (
     <section aria-labelledby="cta-band" className="mx-auto mt-24 max-w-6xl px-4">
       <div className="relative overflow-hidden rounded-2xl bg-brand px-6 py-12 text-brand-ink md:px-12 md:py-16">
@@ -182,7 +182,7 @@ export function CTABand({ title = TAGLINE, body = "Bring what you do. Build what
           <h2 id="cta-band" className="font-serif text-3xl font-semibold leading-tight md:text-4xl">{title}</h2>
           <p className="mt-4 text-lg opacity-90">{body}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/join" className="inline-flex rounded-md bg-brand-ink px-6 py-3.5 font-semibold text-brand hover:opacity-90">Create your free account</Link>
+            <Link href="/join" className="inline-flex rounded-md bg-brand-ink px-6 py-3.5 font-semibold text-brand hover:opacity-90">Apply to join</Link>
             <Link href="/how-it-works" className="inline-flex rounded-md border border-brand-ink/40 px-6 py-3.5 font-semibold hover:border-brand-ink">See the 7 steps</Link>
           </div>
         </div>

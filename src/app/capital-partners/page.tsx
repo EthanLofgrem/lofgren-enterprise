@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const HOW = [
-  { icon: "user", title: "Create an account", body: "Tell us the kinds of businesses and people you would like to support, and whether you also bring skills or experience." },
+  { icon: "user", title: "Apply", body: "Tell us the kinds of businesses and people you would like to support, and whether you also bring skills or experience." },
   { icon: "shield", title: "We check the rules first", body: "Before any money is discussed with a team, an attorney confirms what kind of participation is allowed for you and for that business." },
   { icon: "people", title: "Meet a team", body: "You are introduced only to teams that want capital and have agreed to meet. You see their plan, and they learn what you would contribute." },
   { icon: "pen", title: "Agree in writing", body: "Your contribution, your ownership share, and how and when you could be repaid are written into the operating agreement everyone signs." },
@@ -68,7 +68,7 @@ export default function CapitalPartners() {
           </div>
         </div>
       </Page>
-      <CTABand title="Interested in backing a team?" body="Create an account as a capital partner. We will reach out before any opportunity is shared, to explain what applies to you." />
+      <CTABand title="Interested in backing a team?" body="Apply and choose Capital as what you bring. Nothing about money is discussed until an attorney has approved how it would work." />
     </>
   );
 }

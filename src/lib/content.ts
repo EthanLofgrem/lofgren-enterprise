@@ -29,10 +29,10 @@ export const STEPS = [
     n: 1,
     name: "Qualify",
     icon: "user",
-    title: "Create your account and show what you bring",
+    title: "Apply and show what you bring",
     short: "A free profile: your skills, talents, space, equipment, or capital.",
     body: "Sign up in a few minutes. Tell us who you are, what you can contribute, and the kinds of businesses you would like to be part of. A person reviews every profile.",
-    you: "Create your free account and describe what you bring. It commits you to nothing.",
+    you: "Apply for free and describe what you bring. It commits you to nothing.",
     us: "A person reviews your profile and emails you about next steps.",
   },
   {
@@ -70,10 +70,10 @@ export const STEPS = [
     name: "Assemble",
     icon: "pen",
     title: "Sign and form your LLC",
-    short: "One agreement, signed through DocuSign, and a new LLC for your team.",
-    body: "The plan becomes an operating agreement prepared with an attorney. Everyone reads it, can review it with their own adviser, and signs through DocuSign. Then the business is registered as its own LLC.",
+    short: "If the team goes ahead: one agreement everyone signs, and a new LLC.",
+    body: "If the team decides to go ahead, the plan becomes an operating agreement prepared with an attorney. Everyone reads it, can review it with their own adviser, and signs electronically. Then the business can be registered as its own LLC.",
     you: "Read, ask questions, and sign when you are comfortable.",
-    us: "We coordinate the attorney, the signing, and the LLC filing. Nothing is binding until everyone signs.",
+    us: "We help coordinate the attorney, the signing, and the LLC filing. Nothing is binding until everyone signs.",
   },
   {
     n: 6,
@@ -248,20 +248,20 @@ export const EXAMPLES = [
 }[];
 
 export const PROMISES = [
-  { icon: "user", title: "Free to join", body: "Creating an account and being matched costs nothing." },
+  { icon: "user", title: "Free to join", body: "Applying and being matched cost nothing." },
   { icon: "handshake", title: "You choose", body: "You are only introduced when you agree, and you can say no at any step." },
   { icon: "pen", title: "Everything in writing", body: "Roles, ownership, and money are set out in one agreement before anything starts." },
-  { icon: "building", title: "A business you own", body: "Each team forms its own LLC, with every member's share written into its agreement." },
+  { icon: "building", title: "A business you own", body: "A team that goes ahead forms its own LLC, with every member's share written into its agreement." },
 ] as const satisfies readonly { icon: IconName; title: string; body: string }[];
 
 export const FAQ = [
   {
-    q: "Who can create an account?",
+    q: "Who can apply?",
     a: "Anyone 18 or older who wants to build a business with other people. You do not need a business idea, a degree, or money. A skill, a talent, experience, space, equipment, or capital are all welcome.",
   },
   {
     q: "Does it cost anything to join?",
-    a: "No. Creating an account, completing your profile, and being matched are free. If you never form a business, you owe nothing.",
+    a: "No. Applying and being matched are free. If you never form a business, you owe nothing.",
   },
   {
     q: "How does Lofgren Enterprise make money?",
@@ -285,7 +285,7 @@ export const FAQ = [
   },
   {
     q: "What exactly do I sign?",
-    a: "An operating agreement for your new LLC, prepared with an attorney. It lists every member, their role, their contribution, their ownership share, and how decisions and profits work. Everyone signs electronically through DocuSign.",
+    a: "An operating agreement for your new LLC, prepared with an attorney. It lists every member, their role, their contribution, their ownership share, and how decisions and profits work. Everyone would sign electronically.",
   },
   {
     q: "Can I have my own lawyer review the agreement?",
@@ -293,7 +293,7 @@ export const FAQ = [
   },
   {
     q: "Can I join if I only have money to contribute?",
-    a: "You can create an account as a capital partner. Contributing money to a business can be treated as an investment under securities laws, so capital is only accepted on terms an attorney has confirmed are allowed. See the Capital partners page.",
+    a: "You can apply and choose Capital as what you bring. Contributing money to a business can be treated as an investment under securities laws, so capital is only accepted on terms an attorney has confirmed are allowed. See the Capital partners page.",
   },
   {
     q: "What happens after the LLC is formed?",

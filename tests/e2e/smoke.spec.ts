@@ -49,7 +49,7 @@ test("old routes redirect to the member pages", async ({ page }) => {
 
 test("join walks through all four steps and stays locked while sign-up is closed", async ({ page }) => {
   await page.goto("/join");
-  await expect(page.getByText("Sign-up opens soon").first()).toBeVisible();
+  await expect(page.getByText("Applications open soon").first()).toBeVisible();
   await page.getByLabel("Full name").fill("Test Member");
   await page.getByLabel("Email").fill("member@example.com");
   await page.getByLabel("Where are you based?").fill("Tucson, AZ");
@@ -61,7 +61,7 @@ test("join walks through all four steps and stays locked while sign-up is closed
   await page.getByRole("button", { name: "Continue" }).click();
   await page.getByRole("button", { name: "Continue" }).click();
   await expect(page.locator("dd", { hasText: "Visual arts and crafts" })).toBeVisible();
-  await expect(page.getByRole("button", { name: "Create my account" })).toBeDisabled();
+  await expect(page.getByRole("button", { name: "Send my application" })).toBeDisabled();
 });
 
 test("console fails closed when Supabase is not configured", async ({ page }) => {

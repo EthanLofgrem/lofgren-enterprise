@@ -5,7 +5,7 @@ import { submitApplication, type JoinState } from "./actions";
 
 export type Category = { slug: string; title: string };
 
-const STEP_TITLES = ["About you", "What you bring", "What you want to build", "Review and create"] as const;
+const STEP_TITLES = ["About you", "What you bring", "What you want to build", "Review and send"] as const;
 
 /** Which step each server-side field error belongs to, so we can jump back to it. */
 const FIELD_STEP: Record<string, number> = {
@@ -100,7 +100,7 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
         <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
 
-      <ol className="grid grid-cols-4 gap-2" aria-label="Sign-up progress">
+      <ol className="grid grid-cols-4 gap-2" aria-label="Application progress">
         {STEP_TITLES.map((t, i) => (
           <li key={t} aria-current={i === step ? "step" : undefined}>
             <span className={`block h-1.5 rounded-full ${i <= step ? "bg-brand" : "bg-line"}`} />
@@ -124,7 +124,7 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
         <label className="block">
           <span className="font-semibold">Email</span>
           <input name="email" type="email" autoComplete="email" required maxLength={254} className={input} aria-invalid={!!serverErrors.email} aria-describedby={describedBy("email", "email-hint")} />
-          <Hint id="email-hint">We will send your account confirmation here.</Hint>
+          <Hint id="email-hint">We will email you here about your application.</Hint>
           <FieldError errors={serverErrors.email} id="email-error" />
         </label>
         <label className="block">
@@ -183,9 +183,9 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
         </label>
       </fieldset>
 
-      {/* Step 4: Review and create */}
+      {/* Step 4: Review and send */}
       <fieldset ref={(el) => { stepRefs.current[3] = el; }} hidden={step !== 3} disabled={pending} className="mt-6 space-y-5">
-        <legend className="sr-only">Review and create your account</legend>
+        <legend className="sr-only">Review and send your application</legend>
         <dl className="divide-y divide-line rounded-xl border border-line bg-paper text-sm">
           {Object.entries(review).map(([k, v]) => (
             <div key={k} className="grid gap-1 px-4 py-3 sm:grid-cols-[10rem_1fr]">
@@ -221,13 +221,13 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
           </button>
         ) : (
           <button type="submit" disabled={!enabled || pending} className="rounded-lg bg-brand px-6 py-3 font-semibold text-brand-ink hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50">
-            {pending ? "Creating your account…" : "Create my account"}
+            {pending ? "Sending…" : "Send my application"}
           </button>
         )}
       </div>
 
       <div role="status" aria-live="polite" className="mt-4 text-sm">
-        {!enabled && step === 3 && <p className="text-muted">Sign-up opens soon. You can look through every step, but nothing is sent yet.</p>}
+        {!enabled && step === 3 && <p className="text-muted">Applications open soon. You can look through every step, but nothing is sent yet.</p>}
         {state.status === "rate_limited" && <p className="text-bad">Too many attempts from your connection. Please try again in an hour.</p>}
         {state.status === "unavailable" && enabled && <p className="text-bad">Something went wrong on our side. Please try again in a few minutes.</p>}
         {state.status === "invalid" && serverErrors.form && <p className="text-bad">{serverErrors.form[0]}</p>}

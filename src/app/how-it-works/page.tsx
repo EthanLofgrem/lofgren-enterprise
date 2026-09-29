@@ -24,11 +24,11 @@ export default function HowItWorks() {
       <Page
         eyebrow="How it works"
         title="Qualify. Discover. Diligence. Blueprint. Assemble. Pilot. Operate."
-        intro="Seven steps from sign-up to a business you own. Joining is free, and you only move forward when you choose to. Here is exactly what happens at each step, what you do, and what we do."
+        intro="Seven steps from application to a business you own. Joining is free, and you only move forward when you choose to. Here is exactly what happens at each step, what you do, and what we do."
       >
         <div className="mb-10 max-w-3xl">
           <DraftNotice>
-            Pre-launch: this is how the process is designed to work once accounts open. Each team&apos;s agreement, DocuSign signing,
+            Pre-launch: this is how the process is designed to work once applications open. Each team&apos;s agreement, electronic signing,
             and LLC filing will be handled case by case with licensed professionals.
           </DraftNotice>
         </div>
@@ -83,10 +83,10 @@ export default function HowItWorks() {
                 what each person contributes, their role, their ownership share, how profits are shared, how decisions are made, and what happens if someone leaves.
               </p>
               <p>
-                <strong className="text-ink">DocuSign</strong> lets everyone read and sign that agreement online from any device. Each member gets a copy of the signed agreement.
+                <strong className="text-ink">Electronic signing</strong> (we plan to use DocuSign) would let everyone read and sign that agreement online from any device. Each member gets a copy of the signed agreement.
               </p>
               <p>
-                <strong className="text-ink">The LLC</strong> (limited liability company) is registered with your state. It separates the business from each member&apos;s personal finances and records who owns what.
+                <strong className="text-ink">The LLC</strong> (limited liability company) would be registered with your state. It separates the business from each member&apos;s personal finances and records who owns what.
               </p>
             </div>
           </div>
@@ -106,7 +106,7 @@ export default function HowItWorks() {
           </div>
         </section>
       </Page>
-      <CTABand title="Step 1 takes a few minutes." body="Create your free account and tell us what you bring. We will take it from there, one step at a time." />
+      <CTABand title="Step 1 takes a few minutes." body="Apply for free and tell us what you bring. We will take it from there, one step at a time." />
     </>
   );
 }

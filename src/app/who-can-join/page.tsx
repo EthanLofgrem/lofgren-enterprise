@@ -16,7 +16,7 @@ export default function WhoCanJoin() {
       <Page
         eyebrow="Who can join"
         title="If you can contribute something, you belong here."
-        intro="Anyone 18 or older can create an account. You don't need a business idea, a degree, or money. Here are the kinds of things members bring. Most people bring more than one."
+        intro="Anyone 18 or older can apply. You don't need a business idea, a degree, or money. Here are the kinds of things members bring. Most people bring more than one."
       >
         <ul className="grid gap-5 md:grid-cols-2">
           {CATEGORIES.map((c) => (
@@ -47,7 +47,7 @@ export default function WhoCanJoin() {
             <h2 id="not-listed" className="font-serif text-2xl font-semibold md:text-3xl">Don&apos;t see your skill?</h2>
             <p className="mt-3 text-lg text-muted">
               These lists are only examples. Teaching, writing, childcare, fitness, logistics, translation, organizing, or knowing the right
-              people: if it could help a business run, tell us about it when you create your account.
+              people: if it could help a business run, tell us about it when you apply.
             </p>
           </div>
           <div className="grid content-center gap-3">
@@ -60,7 +60,7 @@ export default function WhoCanJoin() {
           </div>
         </section>
       </Page>
-      <CTABand title="Tell us what you bring." body="It takes a few minutes to create your account. You choose what to share and who you meet." />
+      <CTABand title="Tell us what you bring." body="Applying takes a few minutes. You choose what to share and who you meet." />
     </>
   );
 }

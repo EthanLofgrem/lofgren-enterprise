@@ -6,8 +6,19 @@ export const SITE_HEADLINE = "Bring what you do. Build what comes next.";
 export const SITE_DESCRIPTION =
   "Lofgren Enterprise connects people with skills, space, equipment, and capital, and helps them form a business they own together.";
 
-/** Public marketing pages, in sitemap order. Private routes (/console, /join/received) are excluded. */
+/** Public marketing pages. Private routes (/console, /join/received) are excluded. */
 export const PUBLIC_ROUTES = ["/", "/how-it-works", "/who-can-join", "/examples", "/capital-partners", "/faq", "/fees", "/join", "/contact", "/privacy", "/terms"] as const;
+
+/**
+ * The only pages offered to search engines at launch, in sitemap order.
+ * Every other public page (capital, fees, FAQ, application, contact, legal
+ * drafts) stays noindex until the owner and counsel have reviewed it.
+ */
+export const INDEXABLE_ROUTES = ["/", "/how-it-works", "/who-can-join", "/examples"] as const;
+
+export function isIndexable(path: string): boolean {
+  return (INDEXABLE_ROUTES as readonly string[]).includes(path);
+}
 
 type Env = Record<string, string | undefined>;
 
@@ -35,7 +46,7 @@ export function indexingEnabled(env: Env = process.env): boolean {
 
 const SHARE_IMAGE = { url: "/opengraph-image", width: 1200, height: 630, alt: `${SITE_NAME}: ${SITE_HEADLINE}` };
 
-/** Title, description, canonical URL, and share card for one public page. */
+/** Title, description, canonical URL, and share card for one public page. Pages outside INDEXABLE_ROUTES are always noindex. */
 export function pageMetadata({ title, description, path, absoluteTitle = false }: { title: string; description: string; path: string; absoluteTitle?: boolean }): Metadata {
   const fullTitle = absoluteTitle ? title : `${title} · ${SITE_NAME}`;
   return {
@@ -44,6 +55,7 @@ export function pageMetadata({ title, description, path, absoluteTitle = false }
     alternates: { canonical: path },
     openGraph: { type: "website", siteName: SITE_NAME, locale: "en_US", title: fullTitle, description, url: path, images: [SHARE_IMAGE] },
     twitter: { card: "summary_large_image", title: fullTitle, description, images: [SHARE_IMAGE.url] },
+    ...(isIndexable(path) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 

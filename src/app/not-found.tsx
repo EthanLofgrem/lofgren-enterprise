@@ -12,7 +12,7 @@ export default function NotFound() {
         <CTA href="/how-it-works" variant="secondary">See the 7 steps</CTA>
       </div>
       <p className="mt-8 text-muted">
-        Ready to take part? <Link href="/join" className="font-semibold text-accent underline underline-offset-4">Create your free account</Link>.
+        Ready to take part? <Link href="/join" className="font-semibold text-accent underline underline-offset-4">Apply to join</Link>.
       </p>
     </Page>
   );

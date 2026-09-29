@@ -27,7 +27,7 @@ export const applicationSchema = z.object({
   website: z.string().max(0, { error: "Rejected" }).optional(),
 }).superRefine((v, ctx) => {
   if (v.kind === "member" && v.adult !== true) {
-    ctx.addIssue({ code: "custom", path: ["adult"], message: "You must be 18 or older to create an account" });
+    ctx.addIssue({ code: "custom", path: ["adult"], message: "You must be 18 or older to apply" });
   }
 });
 

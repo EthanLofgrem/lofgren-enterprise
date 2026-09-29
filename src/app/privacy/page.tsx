@@ -28,7 +28,7 @@ export default function Privacy() {
     <Page eyebrow="Draft" title="Privacy notice">
       <DraftNotice>
         Draft for owner and attorney review. Not final, and not legal advice. Items in brackets still need a decision. While the site is in
-        preview, sign-up is closed and nothing typed into the forms is stored. Version: {CONSENT_VERSION}.
+        preview, applications are closed and nothing typed into the forms is stored. Version: {CONSENT_VERSION}.
       </DraftNotice>
 
       <div className="mt-10 max-w-3xl space-y-10 leading-relaxed text-muted">
@@ -40,7 +40,7 @@ export default function Privacy() {
         </Section>
 
         <Section title="What we collect">
-          <p>When you create an account (apply) through the website, we collect what you type into the form:</p>
+          <p>When you apply through the website, we collect what you type into the form. Applying does not create an account or a login.</p>
           <ul className="list-disc space-y-1.5 pl-5">
             <li>Your name, email address, and city or region.</li>
             <li>A business name, if you have one.</li>
@@ -54,7 +54,7 @@ export default function Privacy() {
           </p>
           <p>
             To stop spam and abuse, we record a scrambled (salted, one-way hashed) form of your internet address each time you submit. We cannot
-            turn it back into your address, and we delete these records after one day.
+            turn it back into your address. Records older than one day are removed the next time anyone submits the form, so an old record can remain until then; there is no separate timed deletion job.
           </p>
           <p>
             When our team reviews your application, we add internal notes and a history of status changes (for example, &ldquo;in
@@ -94,15 +94,15 @@ export default function Privacy() {
         <Section title="How long we keep it">
           <p>
             We keep applications for <Blank>retention period</Blank> after our last contact with you, unless you ask us to delete them sooner or we
-            must keep them longer for legal reasons. Abuse-prevention records are deleted after one day.
+            must keep them longer for legal reasons. Abuse-prevention records are removed as described above. <Blank>how and by whom applications are deleted at the end of the retention period</Blank>
           </p>
         </Section>
 
         <Section title="Your choices">
           <p>
             You can ask to see, correct, or delete the information you gave us, or withdraw from consideration, by emailing{" "}
-            <Blank>privacy contact email</Blank>. We will respond within <Blank>response time</Blank>. Deleting your application removes it and
-            its notes; we may keep a record that a deletion request was handled.
+            <Blank>privacy contact email</Blank>. We will respond within <Blank>response time</Blank>. <Blank>how we verify the request, what a deletion
+            removes, and whether a record of the request is kept</Blank>
           </p>
         </Section>
 
@@ -118,7 +118,7 @@ export default function Privacy() {
         </Section>
 
         <Section title="Changes">
-          <p>If we change this notice, we will update the version shown above. The sign-up form records which version you agreed to.</p>
+          <p>If we change this notice, we will update the version shown above. The application form records which version you agreed to.</p>
         </Section>
       </div>
     </Page>

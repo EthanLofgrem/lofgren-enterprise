@@ -49,7 +49,7 @@ function HeroVisual() {
           <p className="text-xs font-semibold uppercase tracking-[0.14em] opacity-80">One business they own</p>
           <p className="mt-1 font-serif text-2xl font-semibold">Gallery &amp; Shop LLC</p>
           <ul className="mt-4 space-y-2 text-sm">
-            {["Everyone agreed to the team", "Roles and ownership in one plan", "Agreement signed through DocuSign", "Registered as an LLC"].map((t) => (
+            {["Everyone agreed to the team", "Roles and ownership in one plan", "Agreement signed by everyone", "Registered as an LLC, if they go ahead"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <span aria-hidden="true" className="grid h-5 w-5 place-items-center rounded-full bg-brand-ink/15 text-xs">✓</span>
                 {t}
@@ -80,10 +80,10 @@ export default function Home() {
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted md:text-xl">
             Lofgren Enterprise connects people who have skills, talents, property, equipment, or capital, then helps them
-            turn a good team into a real business: one written agreement, signed by everyone, and an LLC you own together.
+            turn a good team into a real business: if the team decides to go ahead, one written agreement signed by everyone and an LLC you own together.
           </p>
           <div className="mt-9 flex flex-wrap gap-3">
-            <CTA>Create your free account</CTA>
+            <CTA>Apply to join</CTA>
             <CTA href="/how-it-works" variant="secondary">See the 7 steps</CTA>
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
@@ -103,7 +103,7 @@ export default function Home() {
             {([
               { icon: "people", title: "We connect", body: "You tell us what you bring and what interests you. We find people whose strengths fit yours." },
               { icon: "blueprint", title: "We organize", body: "We help the team agree on roles, contributions, and ownership, and put it all in one clear plan." },
-              { icon: "building", title: "We make it official", body: "An attorney-prepared agreement, signed through DocuSign, and a new LLC registered for your team." },
+              { icon: "building", title: "We make it official", body: "When a team is ready: an attorney-prepared agreement everyone signs, and a new LLC for the team." },
             ] as const).map((b) => (
               <div key={b.title} className="flex gap-4">
                 <IconBadge name={b.icon} />
@@ -144,7 +144,7 @@ export default function Home() {
         <SectionHeading
           id="steps"
           eyebrow="How it works"
-          title="Seven steps from sign-up to your own business."
+          title="Seven steps from application to your own business."
           intro={`${STEPS.map((s) => s.name).join(", ")}. You move forward only when you want to, and saying no is always free.`}
         />
         <div className="mt-10"><StepList /></div>
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
           <ul className="grid gap-4 self-center">
             {[
-              ["We do", "Match members, guide the plan, coordinate the attorney, DocuSign, and LLC filing, and support the business after launch."],
+              ["We do", "Match members, guide the plan, help coordinate the attorney, signing, and LLC filing when a team goes ahead, and support the business after launch."],
               ["We don't", "Guarantee results, promise returns, give legal or tax advice, or hold your money."],
               ["You decide", "Who you work with, what you contribute, and whether to sign."],
             ].map(([h, b]) => (

@@ -50,7 +50,7 @@ export default function Examples() {
           ))}
         </ul>
       </Page>
-      <CTABand title="Your team could be next." body="Create an account and tell us which kinds of businesses interest you. We look for the people who fit." />
+      <CTABand title="Your team could be next." body="Apply and tell us which kinds of businesses interest you. We look for the people who fit." />
     </>
   );
 }
