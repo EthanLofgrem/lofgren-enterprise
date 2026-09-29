@@ -1,3 +1,5 @@
+> **Superseded by docs/product/CLAUDE-MISSION.md.** Kept for reference; where they disagree, the mission file wins.
+
 # Lofgren Enterprise — Claude Code Pro master build pack
 
 **Issued:** 2026-09-27  
