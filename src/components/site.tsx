@@ -29,9 +29,9 @@ export function Logo() {
 /** Shown on every page until the owner opens the site. */
 export function PrelaunchBanner() {
   return (
-    <div role="note" className="bg-brand px-4 py-2 text-center text-sm text-brand-ink">
+    <aside aria-label="Site status" className="bg-brand px-4 py-2 text-center text-sm text-brand-ink">
       Pre-launch preview. Accounts, matching, agreements, and LLC formation are not open yet.
-    </div>
+    </aside>
   );
 }
 

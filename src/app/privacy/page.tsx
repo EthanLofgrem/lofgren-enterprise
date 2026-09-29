@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { DraftNotice, Page } from "@/components/site";
 
-export const metadata: Metadata = { title: "Privacy (draft)" };
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy notice (draft)",
+  description: "Draft privacy notice for Lofgren Enterprise, awaiting review. It will explain what we collect, why, who can see it, and how to delete it.",
+  path: "/privacy",
+});
 
 export default function Privacy() {
   return (

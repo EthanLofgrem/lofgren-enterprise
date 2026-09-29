@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { CTABand, Callout, DraftNotice, IconBadge, Page, SectionHeading } from "@/components/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Capital partners",
-  description: "How people who contribute money can take part in Lofgren Enterprise teams, and the legal rules that apply.",
-};
+  description: "How people who contribute money could take part in Lofgren Enterprise teams, and the legal rules that apply before any capital is accepted.",
+  path: "/capital-partners",
+});
 
 const HOW = [
   { icon: "user", title: "Create an account", body: "Tell us the kinds of businesses and people you would like to support, and whether you also bring skills or experience." },
-  { icon: "shield", title: "We check the rules first", body: "Before any money is discussed with a team, our attorneys confirm what kind of participation is allowed for you and for that business." },
+  { icon: "shield", title: "We check the rules first", body: "Before any money is discussed with a team, an attorney confirms what kind of participation is allowed for you and for that business." },
   { icon: "people", title: "Meet a team", body: "You are introduced only to teams that want capital and have agreed to meet. You see their plan, and they learn what you would contribute." },
   { icon: "pen", title: "Agree in writing", body: "Your contribution, your ownership share, and how and when you could be repaid are written into the operating agreement everyone signs." },
 ] as const;
@@ -23,7 +25,7 @@ export default function CapitalPartners() {
       >
         <div className="mb-10 max-w-3xl">
           <DraftNotice>
-            Pre-launch: no capital opportunities are offered or accepted. Capital participation opens only after our attorneys approve
+            Pre-launch: no capital opportunities are offered or accepted. Capital participation opens only after an attorney approves
             how it will work.
           </DraftNotice>
         </div>
@@ -47,7 +49,7 @@ export default function CapitalPartners() {
             <Callout title="Important: money is regulated">
               <p>
                 Contributing money to a business in exchange for a share of its profits can be treated as an investment under securities laws.
-                Because of that, capital is only accepted on terms our attorneys confirm are allowed. Some opportunities may be limited to
+                Because of that, capital is only accepted on terms an attorney has confirmed are allowed. Some opportunities may be limited to
                 accredited investors, or to people who also work in the business.
               </p>
             </Callout>

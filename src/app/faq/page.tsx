@@ -2,15 +2,25 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CTABand, Page } from "@/components/site";
 import { FAQ } from "@/lib/content";
+import { jsonLd, pageMetadata } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Frequently asked questions",
-  description: "Answers about joining Lofgren Enterprise, matching, ownership, fees, DocuSign agreements, and forming an LLC.",
+// Mirrors the visible questions and answers exactly.
+const FAQ_PAGE = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
 };
+
+export const metadata: Metadata = pageMetadata({
+  title: "Frequently asked questions",
+  description: "Plain answers about joining Lofgren Enterprise, matching, ownership, fees, signing through DocuSign, and forming an LLC.",
+  path: "/faq",
+});
 
 export default function FaqPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(FAQ_PAGE) }} />
       <Page eyebrow="FAQ" title="Questions people ask before joining." intro="Short, plain answers. If yours isn't here, contact us.">
         <div className="max-w-3xl divide-y divide-line rounded-2xl border border-line bg-panel">
           {FAQ.map((f) => (

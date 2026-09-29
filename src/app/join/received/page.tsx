@@ -15,7 +15,7 @@ export default async function Received({ searchParams }: { searchParams: Promise
     <Page
       eyebrow="Welcome"
       title="You're in. Qualify is underway."
-      intro="A person on our team will review your profile and email you to confirm your account. Creating an account is not a match, an approval, or an agreement."
+      intro="A person on our team will review your profile and email you about next steps. Creating an account is not a match, an approval, or an agreement."
     >
       {ref && (
         <p className="rounded-xl border border-line bg-panel p-5 text-lg">

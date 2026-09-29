@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { CTABand, IconBadge, Page } from "@/components/site";
 import { EXAMPLES } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Example teams",
-  description: "Illustrative examples of businesses Lofgren Enterprise members could build together: galleries, production companies, renovation businesses, food brands, and more.",
-};
+  description: "Illustrative examples of teams members could form: a gallery and shop, a media company, a renovation business, a food brand, and more.",
+  path: "/examples",
+});
 
 export default function Examples() {
   return (

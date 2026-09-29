@@ -1,17 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
 import { PrelaunchBanner, SiteFooter, SiteHeader } from "@/components/site";
+import { indexingEnabled, SITE_DESCRIPTION, SITE_HEADLINE, SITE_NAME, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap" });
 const body = Inter({ subsets: ["latin"], variable: "--font-body", display: "swap" });
 
+const indexable = indexingEnabled();
+
 export const metadata: Metadata = {
-  title: { default: "Lofgren Enterprise: Bring what you do. Build what comes next.", template: "%s · Lofgren Enterprise" },
-  description:
-    "Lofgren Enterprise connects people with skills, talents, property, equipment, and capital, and helps them form businesses they own together through a signed agreement and their own LLC.",
-  // Pre-launch: keep every page out of search until the owner opens the site.
-  robots: { index: false, follow: false },
+  metadataBase: siteUrl(),
+  applicationName: SITE_NAME,
+  title: { default: `${SITE_NAME}: ${SITE_HEADLINE}`, template: `%s · ${SITE_NAME}` },
+  description: SITE_DESCRIPTION,
+  // Pre-launch: every page stays out of search until the owner sets
+  // SITE_INDEXING=true on the Production deployment (see src/lib/site.ts).
+  robots: indexable ? { index: true, follow: true } : { index: false, follow: false },
+  openGraph: { type: "website", siteName: SITE_NAME, locale: "en_US" },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

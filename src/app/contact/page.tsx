@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import Link from "next/link";
 import { DraftNotice, Page } from "@/components/site";
 
-export const metadata: Metadata = { title: "Contact" };
+export const metadata: Metadata = pageMetadata({
+  title: "Contact",
+  description: "Questions before you join Lofgren Enterprise? How to reach a person, and where to find answers about the seven steps and fees.",
+  path: "/contact",
+});
 
 const input = "mt-1 block w-full rounded-md border border-line bg-panel px-3 py-2.5 disabled:opacity-60";
 

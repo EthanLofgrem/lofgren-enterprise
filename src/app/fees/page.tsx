@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { CTABand, DraftNotice, Page } from "@/components/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Fees",
-  description: "Joining Lofgren Enterprise and being matched are free. Our share or fee for forming a business is written into each agreement before anyone signs.",
-};
+  description: "Joining Lofgren Enterprise and being matched are free. Any fee or share for forming a business is written into its agreement before anyone signs.",
+  path: "/fees",
+});
 
 const FEES = [
   { term: "Creating an account", price: "Free", body: "Sign up, build your profile, and update it any time." },

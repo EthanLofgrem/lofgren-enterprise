@@ -33,7 +33,7 @@ export const STEPS = [
     short: "A free profile: your skills, talents, space, equipment, or capital.",
     body: "Sign up in a few minutes. Tell us who you are, what you can contribute, and the kinds of businesses you would like to be part of. A person reviews every profile.",
     you: "Create your free account and describe what you bring. It commits you to nothing.",
-    us: "We confirm your email, review your profile, and let you know you're ready to be matched.",
+    us: "A person reviews your profile and emails you about next steps.",
   },
   {
     n: 2,
@@ -160,7 +160,7 @@ export const CATEGORIES = [
     slug: "capital",
     icon: "coins",
     title: "Capital",
-    body: "Money to help a team get started, contributed only on terms our attorneys confirm are allowed.",
+    body: "Money to help a team get started, contributed only on terms an attorney has confirmed are allowed.",
     examples: ["Startup funds", "Equipment funding", "Working capital"],
   },
 ] as const satisfies readonly {
@@ -251,7 +251,7 @@ export const PROMISES = [
   { icon: "user", title: "Free to join", body: "Creating an account and being matched costs nothing." },
   { icon: "handshake", title: "You choose", body: "You are only introduced when you agree, and you can say no at any step." },
   { icon: "pen", title: "Everything in writing", body: "Roles, ownership, and money are set out in one agreement before anything starts." },
-  { icon: "building", title: "A business you own", body: "Each team forms its own LLC, so your share is real and protected." },
+  { icon: "building", title: "A business you own", body: "Each team forms its own LLC, with every member's share written into its agreement." },
 ] as const satisfies readonly { icon: IconName; title: string; body: string }[];
 
 export const FAQ = [
@@ -293,7 +293,7 @@ export const FAQ = [
   },
   {
     q: "Can I join if I only have money to contribute?",
-    a: "You can create an account as a capital partner. Contributing money to a business can be treated as an investment under securities laws, so capital is only accepted on terms our attorneys confirm are allowed. See the Capital partners page.",
+    a: "You can create an account as a capital partner. Contributing money to a business can be treated as an investment under securities laws, so capital is only accepted on terms an attorney has confirmed are allowed. See the Capital partners page.",
   },
   {
     q: "What happens after the LLC is formed?",

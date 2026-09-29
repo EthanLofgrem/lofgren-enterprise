@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import Link from "next/link";
 import { CTABand, IconBadge, Page } from "@/components/site";
 import { CATEGORIES } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Who can join",
-  description: "Artists, performers, builders, sellers, tradespeople, property owners, and capital partners: anyone 18 or older with something to contribute can join Lofgren Enterprise.",
-};
+  description: "Artists, performers, builders, sellers, tradespeople, and people with space or equipment: anyone 18 or older with something to contribute can join.",
+  path: "/who-can-join",
+});
 
 export default function WhoCanJoin() {
   return (

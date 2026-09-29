@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { Icon } from "@/components/icons";
 import { CTABand, Callout, DraftNotice, Page, SectionHeading } from "@/components/site";
 import { STEPS } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "How it works",
-  description: "The seven steps from creating a free account to owning a business with your team: match, meet, plan, sign through DocuSign, and form your LLC.",
-};
+  description: "Seven steps: Qualify, Discover, Diligence, Blueprint, Assemble, Pilot, Operate. What you do and what we do at each step, and where you can stop.",
+  path: "/how-it-works",
+});
 
 const EXITS: Record<number, string> = {
   2: "Not the right fit? Decline the match and we keep looking. Anyone can say no after meeting, at no cost.",
@@ -95,7 +97,7 @@ export default function HowItWorks() {
                 <li>Agreements are prepared with a licensed attorney.</li>
                 <li>You are encouraged to have your own lawyer or accountant review the agreement.</li>
                 <li>Lofgren&apos;s own share or fee is written into the agreement before anyone signs.</li>
-                <li>Money is only contributed on terms our attorneys confirm are allowed.</li>
+                <li>Money is only contributed on terms an attorney has confirmed are allowed.</li>
               </ul>
             </Callout>
             <p className="text-sm text-muted">

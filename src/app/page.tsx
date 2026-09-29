@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/icons";
 import { CTA, CTABand, IconBadge, SectionHeading, StepList } from "@/components/site";
 import { CATEGORIES, EXAMPLES, PROMISES, STEPS, TAGLINE } from "@/lib/content";
+import { jsonLd, pageMetadata, SITE_DESCRIPTION, SITE_HEADLINE, SITE_NAME, SITE_TAGLINE, siteUrl } from "@/lib/site";
+
+export const metadata: Metadata = pageMetadata({ title: `${SITE_NAME}: ${SITE_HEADLINE}`, description: SITE_DESCRIPTION, path: "/", absoluteTitle: true });
+
+// Facts only: no logo, address, ratings, or founding claims until they exist.
+const ORGANIZATION = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: siteUrl().origin,
+  description: SITE_DESCRIPTION,
+  slogan: SITE_TAGLINE,
+};
 
 const HERO_TEAM = [
   { icon: "palette", role: "Photographer" },
@@ -52,6 +66,7 @@ function HeroVisual() {
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ORGANIZATION) }} />
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-12 md:pt-20 lg:grid-cols-[1.15fr_1fr]">
         <div>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site";
 import { Icon } from "@/components/icons";
 import { DraftNotice, Eyebrow } from "@/components/site";
 import { CATEGORIES, PROMISES } from "@/lib/content";
@@ -6,10 +7,11 @@ import { CONSENT_VERSION } from "@/lib/consent";
 import { intakeEnabled } from "@/lib/intake/server";
 import { JoinForm } from "./join-form";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Create your account",
   description: "Create a free Lofgren Enterprise account and tell us what you bring. We look for the people you could build a business with.",
-};
+  path: "/join",
+});
 export const dynamic = "force-dynamic";
 
 export default function Join() {
@@ -22,7 +24,7 @@ export default function Join() {
         <p className="mt-3 font-serif text-xl font-semibold text-accent">Bring what you do. Build what comes next.</p>
         <p className="mt-5 text-lg leading-relaxed text-muted">
           Tell us who you are, what you bring, and what you would like to build. It takes a few minutes. A person reviews every profile,
-          then we email you to confirm your account and set up your sign-in.
+          then we email you about next steps.
         </p>
         <ul className="mt-8 space-y-5">
           {PROMISES.map((p) => (
