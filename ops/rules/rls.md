@@ -5,3 +5,4 @@
 - SECURITY DEFINER helpers: `set search_path = ''`, schema-qualified names, narrow purpose.
 - No `using (true)` on tenant data. Billing/ledger writes are server-only.
 - Tests per table: owner allow, anonymous deny, wrong-user deny, cross-tenant deny, client-write deny.
+- Supabase grants new functions to anon/authenticated by default: `revoke all on function ... from public, anon, authenticated`, then grant only what is intended. (Caught by LE-002 test.)
