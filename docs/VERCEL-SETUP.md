@@ -20,6 +20,9 @@ Project: `lofgren-enterprise` (team `ethans-projects-a7eaa281`). These are setti
 ## Code-side settings (in the repo)
 
 - `vercel.json` sets the function region to `sfo1` (San Francisco), next to the dev Supabase project in `us-west-1`.
+- `vercel.json` `ignoreCommand` skips a deployment when a commit changes only `docs/`, `ops/`, or Markdown files. Vercel shows these as skipped/canceled; that is expected.
+- `package.json` pins Node `24.x`, matching CI. Leave the project's Node.js Version setting on 24.x (or default) so the two agree.
+- Search indexing stays off unless `SITE_INDEXING=true` on **Production**; canonical and share URLs use the production address (`NEXT_PUBLIC_APP_URL`, else Vercel's production URL) even on previews.
 - Every page sends `noindex`; Vercel also adds `X-Robots-Tag: noindex` to previews.
 
 ## Before public launch (not now)
