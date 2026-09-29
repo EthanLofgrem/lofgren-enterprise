@@ -1,7 +1,7 @@
 import { z } from "zod";
+import { CONSENT_VERSION } from "@/lib/consent";
 
-/** Current privacy notice version shown next to the consent checkbox. Bump when the notice changes. */
-export const CONSENT_VERSION = "privacy-2026-09-draft";
+export { CONSENT_VERSION };
 
 const text = (min: number, max: number) => z.string().trim().min(min).max(max);
 const optional = (max: number) =>
@@ -10,7 +10,7 @@ const optional = (max: number) =>
 /** Mirrors the constraints in supabase/migrations/*_intake.sql so bad input fails before the database. */
 export const applicationSchema = z.object({
   idempotencyKey: z.uuid(),
-  kind: z.enum(["producer", "partner"]),
+  kind: z.enum(["producer", "partner", "member"]),
   name: text(2, 120),
   email: z.string().trim().toLowerCase().max(254).pipe(z.email()),
   organization: optional(160),
@@ -21,8 +21,14 @@ export const applicationSchema = z.object({
   goals: optional(2000),
   timeline: optional(200),
   consent: z.literal(true, { error: "Consent is required" }),
+  // Members confirm they are 18 or older; not stored, only checked.
+  adult: z.boolean().optional(),
   // Honeypot: real visitors never see or fill this field.
   website: z.string().max(0, { error: "Rejected" }).optional(),
+}).superRefine((v, ctx) => {
+  if (v.kind === "member" && v.adult !== true) {
+    ctx.addIssue({ code: "custom", path: ["adult"], message: "You must be 18 or older to create an account" });
+  }
 });
 
 export type ApplicationInput = z.infer<typeof applicationSchema>;

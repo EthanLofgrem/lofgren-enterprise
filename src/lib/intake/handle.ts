@@ -16,7 +16,7 @@ export type IntakeDeps = {
 
 export type SubmitArgs = {
   p_idempotency_key: string;
-  p_kind: "producer" | "partner";
+  p_kind: "producer" | "partner" | "member";
   p_name: string;
   p_email: string;
   p_location: string;
@@ -46,10 +46,16 @@ export function formToObject(form: FormData) {
     location: get("location"),
     summary: get("summary"),
     capacity: get("capacity"),
-    gaps: (get("gaps") ?? "").split(",").map((s) => s.trim()).filter(Boolean),
+    // Accepts checkbox groups (repeated "gaps") and comma-separated text alike.
+    gaps: form
+      .getAll("gaps")
+      .flatMap((v) => (typeof v === "string" ? v.split(",") : []))
+      .map((s) => s.trim())
+      .filter(Boolean),
     goals: get("goals"),
     timeline: get("timeline"),
     consent: form.get("consent") === "on" ? true : false,
+    adult: form.get("adult") === "on",
     website: get("website"),
   };
 }

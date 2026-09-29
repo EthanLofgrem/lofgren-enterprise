@@ -1,29 +1,51 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens. Every text color meets WCAG AA (4.5:1) on paper, sand,
+ * panel, and brand-soft in both color schemes. --color-copper-bright is for
+ * large decorative shapes only, never for text.
+ */
 @theme {
-  --color-ink: #16202a;
-  --color-muted: #4b5866;
-  --color-line: #d9dee3;
-  --color-paper: #fbfaf7;
+  --color-ink: #10161a;
+  --color-muted: #5e615c;
+  --color-line: #e2d9c8;
+  --color-paper: #faf8f3;
+  --color-sand: #f2ebdd;
   --color-panel: #ffffff;
-  --color-brand: #1f4d3a;
-  --color-brand-ink: #ffffff;
-  --color-accent: #b8862e;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-serif: ui-serif, Georgia, "Times New Roman", serif;
+  --color-brand: #183a32;
+  --color-brand-ink: #faf8f3;
+  --color-brand-soft: #e3ece6;
+  --color-accent: #985a31;
+  --color-copper-bright: #b86d3c;
+  --color-ok: #277655;
+  --color-warn: #8e5f1a;
+  --color-bad: #b14646;
+
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-display), "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-ink: #e8ecef;
-    --color-muted: #a7b1bb;
-    --color-line: #2e3a44;
-    --color-paper: #11181f;
-    --color-panel: #17212a;
-    --color-brand: #6fbf97;
+    --color-ink: #efeae0;
+    --color-muted: #b8b3a8;
+    --color-line: #2c3833;
+    --color-paper: #0f1513;
+    --color-sand: #151e1b;
+    --color-panel: #18221f;
+    --color-brand: #8fd0ae;
     --color-brand-ink: #0c1a13;
-    --color-accent: #e0b25a;
+    --color-brand-soft: #1d2f28;
+    --color-accent: #e3a67a;
+    --color-copper-bright: #c97b47;
+    --color-ok: #7fcaa3;
+    --color-warn: #e2b36b;
+    --color-bad: #f08e8e;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -34,4 +56,16 @@ body {
 :focus-visible {
   outline: 3px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }

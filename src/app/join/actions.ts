@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 import { handleIntake, type IntakeResult } from "@/lib/intake/handle";
 import { clientKey, intakeEnabled, supabaseIntakeDeps } from "@/lib/intake/server";
 
-export type ApplyState = Exclude<IntakeResult, { status: "received" }> | { status: "idle" };
+export type JoinState = Exclude<IntakeResult, { status: "received" }> | { status: "idle" };
 
-export async function submitApplication(_prev: ApplyState, form: FormData): Promise<ApplyState> {
+export async function submitApplication(_prev: JoinState, form: FormData): Promise<JoinState> {
   if (!intakeEnabled()) return { status: "unavailable" };
 
   const h = await headers();
@@ -15,7 +15,7 @@ export async function submitApplication(_prev: ApplyState, form: FormData): Prom
   const result = await handleIntake(form, key, supabaseIntakeDeps());
 
   if (result.status === "received") {
-    redirect(result.reference ? `/apply/received?ref=${encodeURIComponent(result.reference)}` : "/apply/received");
+    redirect(result.reference ? `/join/received?ref=${encodeURIComponent(result.reference)}` : "/join/received");
   }
   return result;
 }

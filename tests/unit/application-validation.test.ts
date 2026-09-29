@@ -21,6 +21,18 @@ describe("applicationSchema", () => {
     expect(r.gaps).toEqual([]);
   });
 
+  it("accepts a member who confirms they are 18 or older", () => {
+    const r = applicationSchema.parse({ ...valid(), kind: "member", adult: true, gaps: ["visual-arts", "capital"] });
+    expect(r.kind).toBe("member");
+    expect(r.gaps).toEqual(["visual-arts", "capital"]);
+  });
+
+  it("rejects a member who has not confirmed their age", () => {
+    const r = applicationSchema.safeParse({ ...valid(), kind: "member" });
+    expect(r.success).toBe(false);
+    if (!r.success) expect(r.error.issues[0]?.path).toEqual(["adult"]);
+  });
+
   it.each([
     ["missing consent", { consent: false }],
     ["bad email", { email: "nope" }],

@@ -41,6 +41,18 @@ describe("handleIntake", () => {
     expect(args.p_consent_version).toMatch(/^privacy-/);
   });
 
+  it("submits a member with checkbox categories as gaps", async () => {
+    const submit = vi.fn(async (_args: Parameters<IntakeDeps["submit"]>[0]) => "LE-ABCDEF1234");
+    const f = form({ kind: "member", gaps: undefined, adult: "on" });
+    f.append("gaps", "visual-arts");
+    f.append("gaps", "space-equipment");
+    const r = await handleIntake(f, "k".repeat(64), deps({ submit }));
+    expect(r).toEqual({ status: "received", reference: "LE-ABCDEF1234" });
+    const args = submit.mock.calls[0]![0];
+    expect(args.p_kind).toBe("member");
+    expect(args.p_gaps).toEqual(["visual-arts", "space-equipment"]);
+  });
+
   it("returns field errors without calling the database or using a rate-limit attempt", async () => {
     const d = deps();
     const r = await handleIntake(form({ email: "bad", consent: undefined }), "k", d);
