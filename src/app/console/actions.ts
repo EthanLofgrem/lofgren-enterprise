@@ -16,7 +16,9 @@ async function callbackUrl() {
   // Supabase only sends links to URLs on the project's redirect allowlist,
   // so a forged Host header cannot redirect a sign-in link elsewhere.
   const h = await headers();
-  const origin = process.env.NEXT_PUBLIC_APP_URL || `${h.get("x-forwarded-proto") ?? "https"}://${h.get("x-forwarded-host") ?? h.get("host")}`;
+  // Use the address the operator is actually on (preview or production), not
+  // NEXT_PUBLIC_APP_URL, so the session cookie lands on the same host.
+  const origin = `${h.get("x-forwarded-proto") ?? "https"}://${h.get("x-forwarded-host") ?? h.get("host")}`;
   return `${origin}/console/auth/callback`;
 }
 
