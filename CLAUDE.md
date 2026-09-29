@@ -21,6 +21,6 @@ Build the public acquisition site, producer and partner intake, protected deal w
 
 ## Token Machine (every session)
 - Follow `ops/README.md`: one task packet, load only what it names, finish with evidence + handoff, then `/clear`.
-- Never push to `main` or merge. Work on `le-<id>-<slug>` branches; Ethan merges PRs. GitHub does not enforce branch rules on this private personal repo, so this rule is the control.
+- Never push to `main` or merge. Work on `le-<id>-<slug>` branches; Ethan merges PRs. Until branch protection is set on `main`, this rule is the control.
 - Checks: `pnpm lint`, `pnpm typecheck`, `pnpm test`, `pnpm build`, `pnpm test:e2e`.
 - Rule files by task: RLS/auth `ops/rules/rls.md`; schema `ops/rules/migration.md`; Stripe `ops/rules/stripe-webhook.md`; Vercel `ops/rules/vercel-preview.md`; agreements/documents `ops/rules/agreements.md`; sales, statements, payouts `ops/rules/revenue-calculation.md`. Boundaries: `docs/architecture/invariants.md`.

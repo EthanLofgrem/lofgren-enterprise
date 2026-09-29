@@ -3,7 +3,7 @@ name: preview-smoke
 # Runs the browser tests against each successful Vercel preview deployment.
 # Needs the repository secret VERCEL_AUTOMATION_BYPASS_SECRET (Vercel project
 # → Settings → Deployment Protection → Protection Bypass for Automation).
-# Without it the job skips with a notice.
+# Without it the job FAILS: a skipped smoke test is not evidence.
 
 on:
   deployment_status:
@@ -34,11 +34,10 @@ jobs:
             exit 1
           fi
           if [ -z "$VERCEL_AUTOMATION_BYPASS_SECRET" ]; then
-            echo "::notice::VERCEL_AUTOMATION_BYPASS_SECRET is not set; skipping the preview smoke test."
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "::error::VERCEL_AUTOMATION_BYPASS_SECRET is not set, so the deployed preview was NOT tested. Create it in Vercel (Deployment Protection > Protection Bypass for Automation) and add it as a GitHub Actions secret."
+            exit 1
           fi
+          echo "ready=true" >> "$GITHUB_OUTPUT"
       - if: steps.check.outputs.ready == 'true'
         uses: actions/checkout@v4
         with:
