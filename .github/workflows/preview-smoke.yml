@@ -1,0 +1,65 @@
+name: preview-smoke
+
+# Runs the browser tests against each successful Vercel preview deployment.
+# Needs the repository secret VERCEL_AUTOMATION_BYPASS_SECRET (Vercel project
+# → Settings → Deployment Protection → Protection Bypass for Automation).
+# Without it the job skips with a notice.
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  preview-smoke:
+    name: preview-smoke
+    if: >-
+      github.event.deployment_status.state == 'success' &&
+      github.event.deployment.environment == 'Preview' &&
+      github.event.deployment_status.creator.login == 'vercel[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      BASE_URL: ${{ github.event.deployment_status.environment_url }}
+      EXPECTED_SHA: ${{ github.event.deployment.sha }}
+      VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+    steps:
+      - name: Check preconditions
+        id: check
+        run: |
+          # Only ever send the bypass secret to this project's own preview URLs.
+          if ! [[ "$BASE_URL" =~ ^https://lofgren-enterprise-[a-z0-9]+-ethans-projects-a7eaa281\.vercel\.app$ ]]; then
+            echo "::error::Unexpected deployment URL; refusing to send the bypass secret."
+            exit 1
+          fi
+          if [ -z "$VERCEL_AUTOMATION_BYPASS_SECRET" ]; then
+            echo "::notice::VERCEL_AUTOMATION_BYPASS_SECRET is not set; skipping the preview smoke test."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.check.outputs.ready == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          persist-credentials: false
+      - if: steps.check.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4
+      - if: steps.check.outputs.ready == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - if: steps.check.outputs.ready == 'true'
+        run: pnpm install --frozen-lockfile
+      - if: steps.check.outputs.ready == 'true'
+        run: pnpm exec playwright install --with-deps chromium
+      - if: steps.check.outputs.ready == 'true'
+        run: pnpm test:e2e
+      - if: failure() && steps.check.outputs.ready == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: preview-playwright-report
+          path: playwright-report/
+          retention-days: 7
