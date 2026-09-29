@@ -59,6 +59,13 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
   function next() {
     const fs = stepRefs.current[step];
     if (!fs) return;
+    // The category checkboxes sit above the text fields, so check them first.
+    if (step === 1 && !fs.querySelector<HTMLInputElement>('input[name="gaps"]:checked')) {
+      setGroupError("Choose at least one thing you bring.");
+      fs.querySelector<HTMLInputElement>('input[name="gaps"]')?.focus();
+      return;
+    }
+    setGroupError(null);
     const fields = Array.from(fs.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>("input, textarea, select"));
     for (const el of fields) {
       if (!el.checkValidity()) {
@@ -67,12 +74,6 @@ export function JoinForm({ enabled, consentVersion, categories }: { enabled: boo
         return;
       }
     }
-    if (step === 1 && !fs.querySelector<HTMLInputElement>('input[name="gaps"]:checked')) {
-      setGroupError("Choose at least one thing you bring.");
-      fs.querySelector<HTMLInputElement>('input[name="gaps"]')?.focus();
-      return;
-    }
-    setGroupError(null);
     if (step === 2 && formRef.current) {
       const data = new FormData(formRef.current);
       setReview({

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Icon } from "@/components/icons";
-import { CTABand, Callout, Page, SectionHeading } from "@/components/site";
+import { CTABand, Callout, DraftNotice, Page, SectionHeading } from "@/components/site";
 import { STEPS } from "@/lib/content";
 
 export const metadata: Metadata = {
@@ -24,6 +24,12 @@ export default function HowItWorks() {
         title="Qualify. Discover. Diligence. Blueprint. Assemble. Pilot. Operate."
         intro="Seven steps from sign-up to a business you own. Joining is free, and you only move forward when you choose to. Here is exactly what happens at each step, what you do, and what we do."
       >
+        <div className="mb-10 max-w-3xl">
+          <DraftNotice>
+            Pre-launch: this is how the process is designed to work once accounts open. Each team&apos;s agreement, DocuSign signing,
+            and LLC filing will be handled case by case with licensed professionals.
+          </DraftNotice>
+        </div>
         <ol className="relative">
           {STEPS.map((s, i) => (
             <li key={s.n} className="relative grid gap-4 pb-12 pl-16 md:grid-cols-[1fr_1.1fr] md:gap-10 md:pl-24">

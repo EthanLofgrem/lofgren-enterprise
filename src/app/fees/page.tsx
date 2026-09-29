@@ -12,7 +12,7 @@ const FEES = [
   {
     term: "When a business forms",
     price: "Set in your agreement",
-    body: "Lofgren Enterprise usually becomes a member of the new LLC, receives a fee for organizing it, or both. The exact terms are written into the operating agreement you review before signing.",
+    body: "Lofgren Enterprise may become a member of the new LLC, receive a fee for organizing it, or both. The exact terms are written into the operating agreement you review before signing.",
   },
   {
     term: "Formation costs",

@@ -52,7 +52,7 @@ export default function WhoCanJoin() {
             <p className="font-semibold">What we look for in every member</p>
             <ul className="space-y-2 text-muted">
               {["Something real to contribute", "Willingness to work with others", "Honesty about your time and resources", "Interest in building for the long term"].map((t) => (
-                <li key={t} className="flex gap-2"><span aria-hidden="true" className="text-ok">✓</span>{t}</li>
+                <li key={t} className="flex gap-2"><span aria-hidden="true" className="text-brand">✓</span>{t}</li>
               ))}
             </ul>
           </div>

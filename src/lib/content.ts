@@ -265,7 +265,7 @@ export const FAQ = [
   },
   {
     q: "How does Lofgren Enterprise make money?",
-    a: "When a team forms a business, Lofgren Enterprise usually becomes a member of the new LLC or receives a fee for organizing it. The exact terms are written into the agreement, and you see them before anyone signs.",
+    a: "When a team forms a business, Lofgren Enterprise may become a member of the new LLC or receive a fee for organizing it. The exact terms are written into the agreement, and you see them before anyone signs.",
   },
   {
     q: "How are matches made?",

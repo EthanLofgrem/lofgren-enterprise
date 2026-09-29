@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CTABand, Callout, IconBadge, Page, SectionHeading } from "@/components/site";
+import { CTABand, Callout, DraftNotice, IconBadge, Page, SectionHeading } from "@/components/site";
 
 export const metadata: Metadata = {
   title: "Capital partners",
@@ -21,6 +21,12 @@ export default function CapitalPartners() {
         title="Help good teams get started, on clear and lawful terms."
         intro="Some businesses need money to begin: equipment, space, materials, or a first run of product. Capital partners can contribute funds to a team and own a share of the business in return."
       >
+        <div className="mb-10 max-w-3xl">
+          <DraftNotice>
+            Pre-launch: no capital opportunities are offered or accepted. Capital participation opens only after our attorneys approve
+            how it will work.
+          </DraftNotice>
+        </div>
         <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
           <section aria-labelledby="how-capital">
             <SectionHeading id="how-capital" title="How it works for capital partners" />

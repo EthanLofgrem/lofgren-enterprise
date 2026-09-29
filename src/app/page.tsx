@@ -56,7 +56,7 @@ export default function Home() {
       <section className="mx-auto grid max-w-6xl items-center gap-14 px-4 pb-16 pt-12 md:pt-20 lg:grid-cols-[1.15fr_1fr]">
         <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-line bg-panel px-3 py-1 text-sm font-medium text-muted">
-            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-ok" />
+            <span aria-hidden="true" className="h-2 w-2 rounded-full bg-copper-bright" />
             Free to join. You choose who you build with.
           </p>
           <p className="mt-7 text-sm font-semibold uppercase tracking-[0.18em] text-accent">{TAGLINE}</p>
@@ -73,7 +73,7 @@ export default function Home() {
           </div>
           <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
             {["No cost to be matched", "Introductions only when you agree", "Nothing binding until everyone signs"].map((t) => (
-              <li key={t} className="flex items-center gap-2"><span aria-hidden="true" className="text-ok">✓</span>{t}</li>
+              <li key={t} className="flex items-center gap-2"><span aria-hidden="true" className="text-brand">✓</span>{t}</li>
             ))}
           </ul>
         </div>
@@ -185,8 +185,8 @@ export default function Home() {
           <div>
             <SectionHeading id="role" eyebrow="Our role" title="What Lofgren Enterprise does, and how we are paid." />
             <p className="mt-4 text-muted">
-              Joining and being matched are free. When a team forms a business, Lofgren Enterprise usually becomes a member of
-              the new LLC or receives a fee for organizing it. Those terms are written into the agreement, so you see them before anyone signs.
+              Joining and being matched are free. When a team forms a business, Lofgren Enterprise may become a member of
+              the new LLC or receive a fee for organizing it. Those terms are written into the agreement, so you see them before anyone signs.
             </p>
             <Link href="/fees" className="mt-5 inline-block font-semibold text-accent underline underline-offset-4">How fees work</Link>
           </div>

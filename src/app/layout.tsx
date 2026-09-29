@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Inter } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/site";
+import { PrelaunchBanner, SiteFooter, SiteHeader } from "@/components/site";
 import "./globals.css";
 
 const display = Fraunces({ subsets: ["latin"], variable: "--font-display", display: "swap" });
@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-panel focus:px-3 focus:py-2">
           Skip to content
         </a>
+        <PrelaunchBanner />
         <SiteHeader />
         <main id="main">{children}</main>
         <SiteFooter />
