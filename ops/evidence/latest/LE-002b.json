@@ -2,7 +2,7 @@
   "task_id": "LE-002b",
   "level": "local-tested",
   "base": "le-002-intake@d81d26af995c77bfa3a1ef7ffc0f8f735ac24be3",
-  "migration_head": "20260928010000_intake_rate_limit",
+  "migration_head": "20260928151117_le_002b_intake_rate_limit",
   "database": "PGlite with Supabase role/grant stub; not a hosted Supabase project",
   "checks": {
     "lint": "passed",
