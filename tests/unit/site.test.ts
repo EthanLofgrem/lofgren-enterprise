@@ -15,9 +15,12 @@ describe("siteUrl", () => {
   it("prefers the configured app URL", () => {
     expect(siteUrl({ NEXT_PUBLIC_APP_URL: "https://example.com", VERCEL_URL: "x.vercel.app" }).origin).toBe("https://example.com");
   });
-  it("uses the production domain on Production and the deployment URL on previews", () => {
+  it("uses the production domain everywhere, so previews never leak their temporary URL", () => {
     expect(siteUrl({ VERCEL_ENV: "production", VERCEL_PROJECT_PRODUCTION_URL: "prod.example.com", VERCEL_URL: "x.vercel.app" }).origin).toBe("https://prod.example.com");
-    expect(siteUrl({ VERCEL_ENV: "preview", VERCEL_PROJECT_PRODUCTION_URL: "prod.example.com", VERCEL_URL: "x.vercel.app" }).origin).toBe("https://x.vercel.app");
+    expect(siteUrl({ VERCEL_ENV: "preview", VERCEL_PROJECT_PRODUCTION_URL: "prod.example.com", VERCEL_URL: "x.vercel.app" }).origin).toBe("https://prod.example.com");
+  });
+  it("uses the deployment URL only when no production address is known", () => {
+    expect(siteUrl({ VERCEL_ENV: "preview", VERCEL_URL: "x.vercel.app" }).origin).toBe("https://x.vercel.app");
   });
   it("falls back to localhost", () => {
     expect(siteUrl({}).origin).toBe("http://localhost:3000");

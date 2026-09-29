@@ -11,10 +11,15 @@ export const PUBLIC_ROUTES = ["/", "/how-it-works", "/who-can-join", "/examples"
 
 type Env = Record<string, string | undefined>;
 
-/** Absolute base URL for canonical links, share cards, the sitemap, and structured data. */
+/**
+ * Absolute base URL for canonical links, share cards, the sitemap, and
+ * structured data. Always the production address when one is known, so
+ * previews never advertise their temporary URLs. Vercel sets
+ * VERCEL_PROJECT_PRODUCTION_URL in every environment, previews included.
+ */
 export function siteUrl(env: Env = process.env): URL {
   if (env.NEXT_PUBLIC_APP_URL) return new URL(env.NEXT_PUBLIC_APP_URL);
-  if (env.VERCEL_ENV === "production" && env.VERCEL_PROJECT_PRODUCTION_URL) return new URL(`https://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
+  if (env.VERCEL_PROJECT_PRODUCTION_URL) return new URL(`https://${env.VERCEL_PROJECT_PRODUCTION_URL}`);
   if (env.VERCEL_URL) return new URL(`https://${env.VERCEL_URL}`);
   return new URL("http://localhost:3000");
 }
