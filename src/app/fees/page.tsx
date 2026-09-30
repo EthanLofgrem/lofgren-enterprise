@@ -40,7 +40,7 @@ export default function Fees() {
           ))}
         </dl>
         <p className="mt-8 max-w-2xl text-muted">
-          Applying and matching never cost anything. We recommend every member review any agreement with their own attorney or accountant before signing.
+          Applying and matching are free today. We recommend every member review any agreement with their own attorney or accountant before signing.
         </p>
       </Page>
       <CTABand />
