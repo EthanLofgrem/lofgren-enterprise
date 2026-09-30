@@ -265,7 +265,7 @@ export const FAQ = [
   },
   {
     q: "How does Lofgren Enterprise make money?",
-    a: "From fees for services it actually provides, such as planning and pilot support, or ongoing operating support a business chooses to keep. Prices will be published before any fee is charged.",
+    a: "From fees for services a team chooses, such as Team Readiness, planning, and pilot support, or ongoing support a business chooses to keep. Applying, introductions, and a self-guided Team Trial are free. The price of deeper support depends on the work involved and is agreed before any work starts.",
   },
   {
     q: "Will Lofgren Enterprise own my business?",

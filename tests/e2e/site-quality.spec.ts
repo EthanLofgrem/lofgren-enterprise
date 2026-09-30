@@ -14,6 +14,8 @@ const BANNED = [
   "guaranteed funding", "guaranteed customers", "automatic ownership", "form your llc", "we form", "we register your",
   "we prepare your", "attorney-prepared", "prepared with an attorney", "through docusign", "coordinate the attorney",
   "profits interest", "lofgren's stake", "become a member of the new llc", "create your account", "create an account",
+  // Nothing can be bought before launch.
+  "buy now", "proceed to checkout", "pay now", "add to cart", "guaranteed match",
 ];
 
 for (const scheme of ["light", "dark"] as const) {
